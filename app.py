@@ -36,7 +36,7 @@ def _get_api_key():
 
 api_key = _get_api_key()
 CHROMA_DIR = "./chroma"
-HIDDEN_COURSES = {"BA 101"}  # parked course folders: kept in ./data but not shown in the UI
+HIDDEN_COURSES = {"ba_101"}  # parked course folders: kept in ./data but not shown in the UI
 RETRIEVER_K = 10  # chunks per question; high enough to cover most of a textbook chapter for overviews
 INDEX_VERSION = "3"  # bump whenever ingestion/chunking changes so cached indexes rebuild
 SHEET_SAMPLE_ROWS = 5
@@ -48,6 +48,13 @@ EXPORT_FORMATS = {
     "PDF": ("pdf", "application/pdf"),
     "PPTX": ("pptx", "application/vnd.openxmlformats-officedocument.presentationml.presentation"),
 }
+
+
+def _pretty(name):
+    """Display form of a snake_case folder or file name: 'ba_336' -> 'BA 336', 'excel_textbook' -> 'Excel Textbook'."""
+    if re.fullmatch(r"[a-z]{2,4}_\d+", name):
+        return name.replace("_", " ").upper()
+    return name.replace("_", " ").title() if name == name.lower() else name
 
 
 def _read_term_start(course_path):
@@ -258,7 +265,7 @@ with st.sidebar:
         available_courses = []
 
     if available_courses:
-        selected_course = st.sidebar.selectbox("Select Course", available_courses)
+        selected_course = st.sidebar.selectbox("Select Course", available_courses, format_func=_pretty)
         course_path = os.path.join(BASE_DATA_DIR, selected_course)
     else:
         selected_course = None
@@ -292,7 +299,7 @@ with st.sidebar:
         st.caption("Chat with Socratica first, then generate a study package from the conversation.")
     if st.button("Generate Study Package", disabled=not has_chat, key="gen_sidebar"):
         _build_export(
-            export_format, selected_course or "Course",
+            export_format, _pretty(selected_course) if selected_course else "Course",
             include_questions, include_definitions, include_transcript,
         )
     _download_export("dl_sidebar")
@@ -311,7 +318,7 @@ def _is_answer_key(file_path):
 def _source_label(source, course_path):
     """Human-readable location, e.g. 'BA 336 > Excel Textbook > Chapter 1 > 1.5 Chapter Practice'."""
     rel = os.path.splitext(os.path.relpath(source, course_path))[0] if source else "unknown"
-    return " > ".join([os.path.basename(course_path)] + rel.split(os.sep))
+    return " > ".join(_pretty(p) for p in [os.path.basename(course_path)] + rel.split(os.sep))
 
 
 def _format_sources(docs):
@@ -534,7 +541,7 @@ BE HONEST ABOUT WHAT YOU KNOW:
     # 5. Display Chat History
     chat_sources = st.session_state.setdefault("chat_sources", {})
     export_offers = st.session_state.setdefault("export_offers", set())
-    course_label = selected_course or "Course"
+    course_label = _pretty(selected_course) if selected_course else "Course"
     for i, message in enumerate(st.session_state["chat_history"]):
         if isinstance(message, HumanMessage):
             with st.chat_message("user"):
