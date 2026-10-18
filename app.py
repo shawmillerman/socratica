@@ -60,6 +60,42 @@ def _read_term_start(course_path):
         return None
 
 
+@st.cache_data(show_spinner=False)
+def _schedule_weeks(course_path, signature):
+    """Split the course's schedule file(s) into {week_number: section_text} by their 'Week N' headings."""
+    weeks = {}
+    for root, _dirs, files in os.walk(course_path):
+        for name in files:
+            lower = name.lower()
+            if "schedule" not in lower or not lower.endswith((".docx", ".txt")) or _is_answer_key(os.path.join(root, name)):
+                continue
+            path = os.path.join(root, name)
+            try:
+                if lower.endswith(".docx"):
+                    text = Docx2txtLoader(path).load()[0].page_content
+                else:
+                    with open(path, encoding="utf-8") as f:
+                        text = f.read()
+            except Exception:
+                continue
+            parts = re.split(r"(?im)^[ \t]*week[ \t]+(\d+)[ \t]*$", text)
+            for number, body in zip(parts[1::2], parts[2::2]):
+                weeks.setdefault(int(number), re.sub(r"\n\s*\n+", "\n", body).strip())
+    return weeks
+
+
+def _schedule_weeks_for(course_path):
+    signature = tuple(
+        (n, os.path.getmtime(os.path.join(r, n)))
+        for r, _d, fs in os.walk(course_path) for n in fs if "schedule" in n.lower()
+    )
+    return _schedule_weeks(course_path, signature)
+
+
+def _week_schedule(course_path, week):
+    return _schedule_weeks_for(course_path).get(week, "")
+
+
 def _calendar_context(course_path):
     """Today's date plus, when the course has a term_start.txt, the current week number."""
     try:
@@ -94,9 +130,59 @@ def _calendar_context(course_path):
             )
 
         weeks = "\n".join(_week_line(n) for n in range(1, TERM_WEEKS + 1))
+        sunday = start + timedelta(days=7 * week - 1)
+        section = _week_schedule(course_path, week) if week <= TERM_WEEKS else ""
+        def _items(n, text):
+            """(name, due_week) for each Apply item in a week; unlabeled sub-items inherit the week's Sunday due date."""
+            lines = [l.strip() for l in text.splitlines() if l.strip()]
+            apply_at = next((i for i, l in enumerate(lines) if l.lower().startswith("apply")), None)
+            explicit = [l for l in lines if re.search(r"\bdue\b", l, re.I) and not re.match(r"(?i)final deadline", l)]
+            out = []
+            for l in explicit:
+                m = re.search(r"due\s+week\s+(\d+)", l, re.I)
+                out.append((re.sub(r"\s*\((?:due)[^)]*\)?", "", l, flags=re.I).strip(" :;"), int(m.group(1)) if m else n))
+            if apply_at is not None and any(re.search(r"due\s+sunday", l, re.I) for l in explicit):
+                named = {name for name, _ in out}
+                for l in lines[apply_at + 1:]:
+                    if not re.match(r"(?i)final deadline", l) and l not in named and not re.search(r"\bdue\b", l, re.I):
+                        out.append((l, n))
+            return out
+
+        def _status(n):
+            gap = (today - (start + timedelta(days=7 * n - 1))).days
+            if gap == 0:
+                return "DUE TODAY"
+            return f"due in {-gap} days" if gap < 0 else f"was due {gap} days ago"
+
+        rows = []
+        for n, text in sorted(_schedule_weeks_for(course_path).items()):
+            for name, due_week in _items(n, text):
+                d = start + timedelta(days=7 * due_week - 1)
+                rows.append((due_week, f"- {name}: due Sunday {d:%b %d} (Week {due_week}, 11:59 pm), {_status(due_week)}"))
+        rows = [r for _, r in sorted(rows, key=lambda x: x[0])]
+        index = (
+            "ALL DUE DATES, resolved to calendar dates in code (use these exactly; do not re-derive them from the "
+            "schedule wording, which does not say which Sunday is meant):\n" + "\n".join(rows) + "\n\n"
+        ) if rows else ""
+        w_last = start + timedelta(days=7 * (TERM_WEEKS - 1))
+        index += (
+            f"Deadlines the course materials give as weekdays of the last week: \"Monday of Week {TERM_WEEKS}\" is "
+            f"{w_last:%A, %B %d, %Y}; \"Friday of Week {TERM_WEEKS}\" (the Final Exam due date, finals week) is "
+            f"{w_last + timedelta(days=4):%A, %B %d, %Y}.\n\n"
+        )
+        due_now = [r for r in rows if "DUE TODAY" in r]
+        this_week = (
+            f"This is Week {week}, ending Sunday {sunday:%B %d}. "
+            "When a student asks what is due today, tonight, tomorrow, or this week, answer from the ALL DUE DATES "
+            "list above using the status shown on each line, and list EVERY matching line. An item whose line says "
+            "\"due in N days\" or \"was due N days ago\" is NOT due today, even if the schedule says \"due Sunday\". "
+            "When asked when a named item is due, give the date on its line. Write the answer naturally; do not copy the list formatting or the words DUE TODAY.\n"
+            + ("Items marked DUE TODAY right now:\n" + "\n".join(due_now) + "\n\n" if due_now else "No item is marked DUE TODAY right now.\n\n")
+        )
         term_info = (
             f"Week 1 of the term began {start:%A, %B %d, %Y}, so today falls in Week {week}. "
             f"If that is beyond Week {TERM_WEEKS}, the term is over.\n"
+            f"{index}{this_week}"
             "Calendar dates for each week (Monday to Sunday):\n"
             f"{weeks}\n"
             "The schedule lists work under a week heading with a weekday, for example \"due Sunday\" under Week 2. "
