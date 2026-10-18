@@ -67,13 +67,63 @@ def load_style_guide(course_path):
     return "\n\n".join(p for p in parts if p)
 
 
-def review_draft(draft_text, course_name, style_guide, assignment=None, api_key=None):
+ASSIGNMENT_DIR = "assignments"
+CONTEXT_KEYWORDS = ("instruction", "rubric", "guide")
+MAX_CONTEXT_CHARS = 12000
+
+
+def _norm(name):
+    return re.sub(r"[\s_\-]+", " ", name).strip().lower()
+
+
+def list_assignments(course_path):
+    """Sorted folder names under the course's assignments folder, excluding answer keys."""
+    root = os.path.join(course_path, ASSIGNMENT_DIR)
+    if not os.path.isdir(root):
+        return []
+    return sorted(
+        d for d in os.listdir(root)
+        if os.path.isdir(os.path.join(root, d)) and "answer key" not in _norm(d)
+    )
+
+
+def load_assignment_context(course_path, folder):
+    """Instructions, rubric and guide text from one assignment folder (answer keys never read)."""
+    root = os.path.join(course_path, ASSIGNMENT_DIR, folder)
+    parts, used = [], 0
+    for name in sorted(os.listdir(root)) if os.path.isdir(root) else []:
+        stem, ext = os.path.splitext(name)
+        ext = ext.lower().lstrip(".")
+        key = _norm(stem)
+        if ext not in SUPPORTED_TYPES or "answer key" in key or not any(k in key for k in CONTEXT_KEYWORDS):
+            continue
+        try:
+            text = _read_file(os.path.join(root, name), ext).strip()
+        except Exception:
+            continue
+        if ext == "pdf":
+            text = " ".join(text.split())
+        text = text[: max(0, MAX_CONTEXT_CHARS - used)]
+        if text:
+            parts.append(f"[{name}]\n{text}")
+            used += len(text)
+    return "\n\n".join(parts)
+
+
+def review_draft(draft_text, course_name, style_guide, assignment=None, assignment_context=None, api_key=None):
     """Writing feedback (markdown) for a student's draft."""
     system = PROMPT_FILE.read_text(encoding="utf-8").replace("{course}", course_name)
     if "{style_guide}" in system:
         system = system.replace("{style_guide}", style_guide or NO_STYLE_GUIDE)
     elif style_guide:
         system += f"\n\nADDITIONAL STYLE GUIDE FILE FROM THE COURSE FOLDER\n{style_guide}"
+    if assignment_context:
+        system += (
+            f"\n\nASSIGNMENT MATERIALS (the instructions, rubric and guide for \"{assignment}\")\n{assignment_context}\n\n"
+            "Use these materials only to check the draft's form against what the assignment asks: required sections, "
+            "length limits, format, and rubric categories. Mention anything the draft seems to be missing, as a question "
+            "or pointer. Never supply content for the assignment and never say whether the draft's analysis is correct."
+        )
     label = f"Assignment: {assignment}\n\n" if assignment else ""
     llm = ChatOpenAI(model=WRITING_MODEL, temperature=0.2, openai_api_key=api_key)
     reply = llm.invoke([

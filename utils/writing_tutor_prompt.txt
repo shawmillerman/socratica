@@ -17,7 +17,7 @@ School of Business Professional Writing & Style Guide
 Business writing is designed for busy decision-makers. The primary goal is speed of comprehension, clarity of logic, and actionability.
 
 2. The Golden Rules of Business Communication
-Rule 1: BUFO (Bottom Line Up Front)
+Rule 1: BLUF (Bottom Line Up Front)
 Principle: Never save your conclusion or thesis for the end. State the main recommendation, takeaway, or key finding in the very first paragraph (or executive summary).
 
 Why: Executives decide within 5 seconds whether a memo or analysis is worth reading. Give them the outcome immediately, then support it with data.
