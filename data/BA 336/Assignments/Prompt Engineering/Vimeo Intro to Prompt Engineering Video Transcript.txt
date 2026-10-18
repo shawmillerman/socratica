@@ -1,0 +1,433 @@
+WEBVTT
+
+1
+00:00:00.555 --> 00:00:01.175
+Hi everyone.
+
+2
+00:00:01.435 --> 00:00:04.255
+My name is Lois and in this short video I'm going
+
+3
+00:00:04.255 --> 00:00:06.375
+to be taking you through an introduction
+
+4
+00:00:06.395 --> 00:00:07.615
+to prompt engineering.
+
+5
+00:00:08.425 --> 00:00:11.455
+Let's get started with what is a prompt.
+
+6
+00:00:13.375 --> 00:00:14.895
+A prompt is simply the question
+
+7
+00:00:14.955 --> 00:00:16.855
+or instruction you give to chat.
+
+8
+00:00:16.975 --> 00:00:21.605
+GPT. Prompting is the art of communicating with AI models
+
+9
+00:00:21.945 --> 00:00:23.565
+to get a desired output.
+
+10
+00:00:24.425 --> 00:00:26.365
+The clearer and more detailed your prompt
+
+11
+00:00:26.545 --> 00:00:30.045
+or input, the better the response from chat GBT.
+
+12
+00:00:30.665 --> 00:00:33.405
+And please don't be thrown off by the term engineering.
+
+13
+00:00:33.705 --> 00:00:36.005
+No science or technical degrees are required
+
+14
+00:00:36.065 --> 00:00:39.005
+to be good at conversing with chat GBT.
+
+15
+00:00:39.885 --> 00:00:43.305
+In fact, top tip, when you are learning how to prompt,
+
+16
+00:00:43.955 --> 00:00:46.025
+think about it in the same way you would
+
+17
+00:00:46.665 --> 00:00:48.585
+communicating a task to a human.
+
+18
+00:00:49.605 --> 00:00:52.025
+The more specific and thorough you are in your
+
+19
+00:00:52.265 --> 00:00:54.785
+communication, the more accurately the task
+
+20
+00:00:54.815 --> 00:00:55.865
+will be completed.
+
+21
+00:00:57.155 --> 00:00:59.905
+Let's discuss how you craft a great prompt.
+
+22
+00:01:00.865 --> 00:01:02.385
+A prompt requires three things.
+
+23
+00:01:03.195 --> 00:01:06.445
+Context, role, and expectation.
+
+24
+00:01:07.755 --> 00:01:10.645
+Context is really the material to be worked on.
+
+25
+00:01:11.715 --> 00:01:14.845
+Role is about describing who you are and what you do,
+
+26
+00:01:16.065 --> 00:01:19.245
+and you can also assign this role or persona to chat.
+
+27
+00:01:19.365 --> 00:01:24.325
+GBT expectation is the desired material you want
+
+28
+00:01:24.355 --> 00:01:25.605
+chat GBT to generate.
+
+29
+00:01:26.715 --> 00:01:28.685
+What I'm going to do now is I'm going to show you
+
+30
+00:01:28.825 --> 00:01:31.365
+how you can incorporate this three step framework
+
+31
+00:01:31.665 --> 00:01:34.245
+to improve your prompts over time.
+
+32
+00:01:37.255 --> 00:01:40.955
+In this example, I start by asking a simple question.
+
+33
+00:01:42.205 --> 00:01:44.345
+Can you help me understand the current
+
+34
+00:01:44.485 --> 00:01:46.065
+trends in global markets?
+
+35
+00:01:47.295 --> 00:01:49.825
+It's very easy to converse with chat GBT,
+
+36
+00:01:50.045 --> 00:01:52.545
+and you can get started by asking questions.
+
+37
+00:01:53.255 --> 00:01:56.705
+Just know that chat GBT doesn't have enough context
+
+38
+00:01:57.005 --> 00:01:59.385
+to help you do a very detailed task.
+
+39
+00:02:00.445 --> 00:02:04.385
+So if we wanted to improve this prompt, what we now need
+
+40
+00:02:04.385 --> 00:02:08.585
+to do is add in additional context to explain who we are,
+
+41
+00:02:08.875 --> 00:02:11.305
+where we work, and what it is we're trying to do.
+
+42
+00:02:12.165 --> 00:02:15.305
+And when we do that, it is much more likely
+
+43
+00:02:15.305 --> 00:02:18.025
+that we get a response that supports the task.
+
+44
+00:02:18.805 --> 00:02:22.865
+So here I am saying I'm a business analyst at Acme co
+
+45
+00:02:23.135 --> 00:02:25.145
+exploring global market trends.
+
+46
+00:02:25.845 --> 00:02:28.305
+Can you help me understand the key trends across
+
+47
+00:02:28.315 --> 00:02:30.025
+industries and regions?
+
+48
+00:02:32.285 --> 00:02:33.505
+Now, the best version
+
+49
+00:02:33.605 --> 00:02:36.745
+of this prompt will also include an
+
+50
+00:02:36.975 --> 00:02:39.735
+expectation here.
+
+51
+00:02:39.805 --> 00:02:43.815
+What we're saying is, I am a business analyst at Acme Klo
+
+52
+00:02:44.445 --> 00:02:46.295
+exploring global market trends.
+
+53
+00:02:47.075 --> 00:02:49.255
+Can you help me understand the major trends
+
+54
+00:02:49.525 --> 00:02:50.895
+impacting global markets?
+
+55
+00:02:52.055 --> 00:02:54.935
+Focusing specifically on how technological advancements
+
+56
+00:02:55.115 --> 00:02:59.015
+and geopolitical shifts are influencing various industries.
+
+57
+00:03:00.015 --> 00:03:01.715
+Please highlight the key trends,
+
+58
+00:03:02.455 --> 00:03:04.035
+assess their potential risks
+
+59
+00:03:04.455 --> 00:03:08.395
+and identify any challenges organizations might face in
+
+60
+00:03:08.675 --> 00:03:10.875
+adapting their strategies to these changes.
+
+61
+00:03:12.415 --> 00:03:16.045
+Again, what we've done here is we've been explicit about the
+
+62
+00:03:16.225 --> 00:03:18.805
+output and the focus for chat, GBT.
+
+63
+00:03:19.545 --> 00:03:22.445
+We want chat GBT to dial into technology,
+
+64
+00:03:23.165 --> 00:03:26.285
+geopolitical shifts, key trends and challenges.
+
+65
+00:03:27.795 --> 00:03:29.325
+What I'm going to do now is I'm going
+
+66
+00:03:29.325 --> 00:03:31.805
+to show another example in this format.
+
+67
+00:03:33.815 --> 00:03:36.485
+Again, what we do is we start off with a question.
+
+68
+00:03:37.225 --> 00:03:39.725
+In this example we're asking chat GBT,
+
+69
+00:03:40.505 --> 00:03:44.565
+can you help me analyze the attached product feedback?
+
+70
+00:03:45.025 --> 00:03:46.845
+We are then inserting a document
+
+71
+00:03:46.915 --> 00:03:48.685
+that includes that feedback.
+
+72
+00:03:49.705 --> 00:03:52.965
+To improve this prompt, we need to explain who we are,
+
+73
+00:03:53.295 --> 00:03:55.845
+where we work, and what it is that we are working on.
+
+74
+00:03:56.505 --> 00:03:59.885
+And that's when we need to layer in context and role.
+
+75
+00:04:01.495 --> 00:04:05.145
+Here we're saying I am a product manager at Acme Co.
+
+76
+00:04:06.005 --> 00:04:09.225
+I'm analyzing feedback on our latest product releases.
+
+77
+00:04:10.095 --> 00:04:12.435
+Can you help me identify common themes in the
+
+78
+00:04:12.795 --> 00:04:13.995
+attached user feedback?
+
+79
+00:04:16.105 --> 00:04:18.045
+Now what we're going to do is we are going
+
+80
+00:04:18.045 --> 00:04:20.645
+to create the best version of this prompt.
+
+81
+00:04:21.505 --> 00:04:23.645
+We are going to layer in expectation
+
+82
+00:04:23.825 --> 00:04:27.205
+and be clear with chat GBT about the material we
+
+83
+00:04:27.205 --> 00:04:28.325
+want to be generated.
+
+84
+00:04:30.755 --> 00:04:33.915
+A prompt that is the best version will look like this.
+
+85
+00:04:34.895 --> 00:04:38.875
+I'm a product manager at Acne co focused on improving our
+
+86
+00:04:38.875 --> 00:04:40.435
+latest product release.
+
+87
+00:04:41.455 --> 00:04:44.155
+Can you help me analyze recent user feedback
+
+88
+00:04:44.295 --> 00:04:48.235
+to identify key themes and prioritize areas for improvement?
+
+89
+00:04:48.865 --> 00:04:51.405
+Please highlight any reoccurring issues,
+
+90
+00:04:52.305 --> 00:04:55.325
+assess the potential impact on user satisfaction
+
+91
+00:04:55.865 --> 00:04:58.245
+and suggest actionable steps we could take
+
+92
+00:04:58.345 --> 00:04:59.845
+to address these concerns.
+
+93
+00:05:00.735 --> 00:05:04.275
+So this final prompt here is being explicit that we want
+
+94
+00:05:04.275 --> 00:05:06.075
+to focus on specific areas
+
+95
+00:05:06.625 --> 00:05:08.995
+when chat GBT analyzes the feedback.
+
+96
+00:05:09.775 --> 00:05:13.435
+And to reiterate, when we spend time thinking about
+
+97
+00:05:13.505 --> 00:05:14.755
+what we are asking for
+
+98
+00:05:15.215 --> 00:05:18.595
+and how we communicate with chat GPT, we're going
+
+99
+00:05:18.595 --> 00:05:21.875
+to be much more satisfied with the responses that we get.
+
+100
+00:05:22.455 --> 00:05:26.835
+So in short, prompt engineering is all about the better the
+
+101
+00:05:26.835 --> 00:05:29.315
+input to get a better output.
+
+102
+00:05:30.955 --> 00:05:33.855
+If you're still struggling, here's a top tip from us.
+
+103
+00:05:34.435 --> 00:05:36.135
+You can jump into chat GBT
+
+104
+00:05:36.155 --> 00:05:40.335
+and actually ask chat GBT to give you the top five prompts
+
+105
+00:05:40.355 --> 00:05:42.175
+for you and your specific role.
+
+106
+00:05:42.595 --> 00:05:44.655
+And this is going to help you to understand
+
+107
+00:05:44.915 --> 00:05:49.215
+how you can also apply chat GBT to you and your role
+
+108
+00:05:49.515 --> 00:05:50.655
+and day-to-day tasks.

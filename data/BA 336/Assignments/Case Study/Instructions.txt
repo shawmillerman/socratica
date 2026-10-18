@@ -1,0 +1,20 @@
+Case Study: What's Driving Revenue?
+Overview:
+This project introduces you to a light business case study using fictional sales data from a made-up office supply company recently “donated” to PSU. In this fictional scenario, you and your partner will help the Dean of the School of Business make sense of the data and explore sales performance across product categories and regions.
+
+You’ll use Excel to explore the data, identify patterns, and make a short recommendation based on your findings.
+
+This assignment can be completed as a group assignment with no more than two people per group. 
+
+Assignment Checklist:
+Download the Dataset: Viking Supply Co | 2024 Sales Data.Links to an external site. Open the Google link, then go to File > Make a copy. Rename your copy to include your name and the assignment title. If you prefer to use Excel, go to File > Download > Microsoft Excel (.xlsx) to save it to your computer, then continue with the assignment instructions.
+Follow the Case Study Assignment GuideDownload Case Study Assignment Guide
+ carefully (also located in the Project Instructions Module). 
+
+Review Excel Skills if Needed: This assignment draws on your knowledge of functions like SUM, AVERAGE, and IF, as well as pivot tables and charts. If you need a refresher on Excel, you can revisit the textbook, search for short tutorials online, or use Excel’s built-in Help feature. If you’re still unsure, feel free to ask a classmate or bring your questions to class. 
+
+Write a Short Reflection (Required in Submission Comments): In addition to the reflection questions outlined in the Assignment Guide, please include a brief note directly in the Canvas submission comments (2–4 sentences). Choose one of the following:
+Where did you run into challenges, and how did you work through them?
+What part of the project required the most thought?
+What was the most important thing you learned in this assignment? 
+If working as a group, submit one assignment per group. Clearly note in your submission who your group partner was. 

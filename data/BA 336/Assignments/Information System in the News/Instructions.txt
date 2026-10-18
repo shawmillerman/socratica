@@ -1,0 +1,9 @@
+Overview
+Information Systems don’t exist in a vacuum. They constantly evolve. And they are integral to modern business, technology, and society. In this assignment, you’ll explore a current news article related to information systems, analyze how the article relates to concepts we've covered in class, and hopefully fostering a deeper understanding of the subject.
+
+Your Task
+Article Selection: Find a recent article (published within the last 3 months) directly related to Information Systems. Relevant topics include cybersecurity, AI, digital platforms, SaaS, data privacy, blockchain, or other related areas.
+Summary: Write a concise summary of the article (100–150 words) that captures its main points and relevance to Information Systems. 
+In-Class Discussion: Bring your article and summary to class, where we'll discuss key takeaways from your articles, connect them to course ideas, and pose open-ended question for class discussion.
+
+The full project guide, including detailed instructions for your individual summary expectations, and the grading rubric, can be found in the Information Systems in the News Assignment Guide

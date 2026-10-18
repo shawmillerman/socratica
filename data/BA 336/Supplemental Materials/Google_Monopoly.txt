@@ -1,0 +1,117 @@
+Source URL: https://www.youtube.com/watch?v=CDb_hEBM6aY
+Title: Judge Rules Google Has a Monopoly 
+TRANSCRIPT: Judge rules Google broke antitrust laws to maintain search monopoly (PBS NewsHour)
+
+Chapter 1: Landmark ruling against Google
+0:04
+Amna: Welcome to the "News hour." In a landmark ruling, a federal judge has found that tech giant Google broke antitrust laws,
+0:12
+acting illegally to maintain a monopoly in online search.
+0:15
+Google currently controls roughly 90% of the world's internet searches.
+0:20
+Today's ruling could upend how Americans get their information online and fundamentally change the way big tech companies operate.
+
+Chapter 2: Context and potential remedies
+0:29
+To help explain what this all means, I'm joined by Rebecca Allensworth, a professor at Vanderbilt law school.
+0:35
+Professor, just put this into context for us.
+0:38
+How big of a deal is today's ruling?
+0:39
+Rebecca: It is a really big deal.
+0:42
+The Biden administration has five major monopolization case is going right now against Google, meta, Amazon and apple.
+0:51
+This is the first want to go to trial and a one.
+0:54
+So in a sense they are one for one.
+0:55
+Amna: We see the and states had sued Google a few years ago, accusing it of illegally securing this online search
+1:05
+dominance we just noted in part by paying companies like apple and Samsung to make sure Google was the default search engine on their devices.
+1:13
+Do they have to change that practice as part of the remedy here? What changes with this ruling?
+1:18
+Rebecca: The judge did not say anything about a remedy yet.
+1:23
+Will be the next round of litigation and we can expect both sides to fight hard over this.
+
+Chapter 3: Impact on big tech competition
+1:27
+But very likely there will be a remedy that changes the way we engage with search on our phones and on our devices.
+1:33
+It is hard to -- overstate what a big deal this is.
+1:37
+The Biden administration has been trying in a lot of different ways to come after competition in the big tech sector.
+1:45
+This is a real sign that antitrust is up to the task.
+1:49
+It is not stuck in the smokestack of history.
+1:53
+Depending on how the remedy comes out this could be a really big turning point in how we think about competition in big tech.
+1:59
+Amna: Are there broader implications for big tech in terms of how they are currently operating?
+2:04
+Will any of that change as a result of this ruling? Rebecca: I think it will.
+2:09
+This case of course only applies to Google and we still have to see the remedy and appeals but there are all kinds of breadcrumbs in the opinion that
+2:18
+other litigants could take up in other cases against tech.
+2:22
+Lots of holdings here that are relevant to the cases I mentioned before but also any other challenges you might have two how tech is competing.
+
+Chapter 4: Details of the judge's opinion
+2:30
+I would be very concerned if I were thinking about how the competitive landscape is going to look in the future if I were a tech company.
+2:39
+I might not have the monopoly and the dominance I have enjoyed for the last 10 or 20 years.
+2:45
+It will not be as secure after this case.
+2:46
+Amna: What are some of those breadcrumbs?
+2:50
+What stood out to you about the details of the judge's ruling today?
+2:53
+Rebecca: First of all, he said this is a zero price market. Consumers do not pay for search.
+3:00
+And yet that is not something that is a defense.
+3:05
+Zero price markets can be monopolized.
+3:07
+Defining a market is a little difficult in a zero price context.
+3:12
+He doesn't have any problem defining a market here.
+3:14
+I think a lot of tools tech companies have been trying to use to combat other tech companies in other cases have been trying to combat their
+3:23
+problems are becoming a lot more suspect after this case.
+3:25
+Amna: You mentioned no remedy decided yet, but should users of Google expect any difference in how they interact with the search right now?
+3:33
+Rebecca: Not in the short term.
+3:36
+I think the remedy will be months if not years away.
+3:38
+And I do think there will likely be a difference in the way we engage with Google ultimately, but not the short term.
+3:46
+The big thing here is the precedent being set for Google and the rest of the tech companies going forward and what they can and cannot do.
+
+Chapter 5: The future of tech regulation
+3:56
+The rules of the road for big tech are changed by this case.
+3:58
+Amna: The last big antitrust ruling against a tech company was more than 20 years ago against Microsoft.
+4:05
+We are in an entirely new internet age right now.
+4:08
+When you look at this ruling and that context, what does that say to you about the government's potential role when it comes to regulating tech companies?
+4:16
+Rebecca: The government has had a major role in regulating competition going back to the Sherman act in 1890.
+4:27
+What is unusual is how it has abdicated that role the last 20 years, and I think that is a turning point in this story.
+4:32
+This is the government has an important role to play even in emerging and net worth tech industries.
+4:40
+Amna: That is Vanderbilt law school professor Rebecca Allensworth joining us on this

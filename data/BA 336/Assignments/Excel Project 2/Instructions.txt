@@ -1,0 +1,28 @@
+Excel Project 2: Apartment Furnishing Budget
+
+Overview:
+Create a workbook to plan and track the cost of furnishing a new apartment. You’ll build individual room budgets, summarize total expenses, calculate a loan repayment plan, and visualize your spending, all while staying within a total budget of $5,000. This project applies concepts from Chapters 1–6, with a focus on formulas, formatting, and financial functions.
+
+Project Instructions: Find full details in the Excel Project #2 Assignment Guide.Download Excel Project #2 Assignment Guide.
+
+Group Reflection Questions (if applicable): In addition to the project instructions, you will also answer the following questions in your submission. You will see the text back when you submit your Excel file. 
+
+What was the most critical technical skill or Excel best practice you learned or reinforced during today's group work? 
+What is one specific, actionable piece of feedback you received from your peer review that actually improved your final spreadsheet, or conversely, what major logic gap did you uncover while auditing someone else's work?
+How did working as a pair (Driver/Navigator) change your approach to building this sheet compared to working completely on your own?
+Look at your final, audited product. If an executive opened this spreadsheet right now, what is the most important insight the data is telling them?
+Resources:
+Refer to the Excel Best Practices GuideDownload Excel Best Practices Guide
+ and the Excel textbook for guidance on layout, functions, and professional spreadsheet presentation.
+
+Next Steps:
+Begin designing your workbook early. You’ll submit the completed project Sunday. 
+
+Group Assignment Modification (Optional)
+This week's assignment might be completed as an in-class collaborative project divided into two specific phases.
+
+Phase 1: Team Build (40 Minutes) You will work in assigned groups using a Driver/Navigator dynamic. One student will manage the Excel worksheet building (the Driver), while the remaining team member will guide the logic and verify compliance with the project rubric (the Navigators).
+
+Phase 2: Peer Audit & Feedback (20 Minutes) After finishing the worksheet (or after 40 minutes), you will email your file to another team. You will spend this phase evaluating another group’s workbook. You are responsible for reviewing their formula logic, ensuring there are no hardcoded values where formulas belong, and checking the professional layout.
+
+Submission Deliverables: Both students should have a copy of the Excel file. Include both student names in the naming of the file and submit the same Excel workbook.  

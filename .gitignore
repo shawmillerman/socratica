@@ -1,0 +1,34 @@
+# Sensitive environment variables & API keys
+.env
+
+# Vector databases & local data files
+# Course materials are committed except answer keys (never indexed) and the parked BA 101 course.
+# Keep the repository PRIVATE: it contains copyrighted textbook content.
+/data/BA 101/
+**/[Aa]nswer[ _-][Kk]ey*/
+**/*[Aa]nswer[ _-][Kk]ey*
+chroma/
+*.db
+*.sqlite3
+
+# Python virtual environment
+venv/
+.venv/
+__pycache__/
+*.pyc
+
+# Operating system metadata
+.DS_Store
+
+# Streamlit secrets (set these in the Community Cloud dashboard instead)
+.streamlit/secrets.toml
+
+# Generated exports and scratch files
+*_study_package.pdf
+*_study_package.pptx
+*.log
+
+# Local tooling and instructor-only notes
+.claude/
+.agents/
+course_guidelines.txt

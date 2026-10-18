@@ -1,0 +1,29 @@
+Objective:
+In this assignment, you're going to complete the same steps from Excel Practice 2.5, but this time using Google Sheets. You'll also reflect on the experience of working in a different spreadsheet application.
+
+Instructions: 
+
+1. Review Excel Practice 2.5
+Read (or re-read) the Practice 2.5 section in your Excel textbookLinks to an external site. to refresh your memory.
+
+2. Download the Data File
+Download the file named PR2-Data, located at the top of the page. 
+
+3. Upload the PR2-Data file to Google Drive
+Locate the PR2-Data file, in the downloads folder of your computer, and drag it into your Google Drive.
+
+4. Open PR2-Data in Google Sheets
+Within Google Drive, double-click the uploaded file and choose the option to "Open with Google Sheets."
+
+5. Complete the Exercise
+Follow the same steps from Excel Practice 2.5, now using Google Sheets 
+
+6. Complete Your Reflection
+Create a new tab in your spreadsheet and name it "Reflection." You will include a brief reflection on the differences between Google Sheets and Excel. Format your response so it’s easy to read and fits entirely on the screen, no scrolling required. Use clear headings, merge text, wrap text, bullet points, or spacing as needed. Address the following questions: 
+
+Did Google Sheets feel easier, harder, or just different to use than Excel? Why?
+Were there any tools or features you were used to in Excel that you couldn’t find or use the same way in Google Sheets?
+How did working in the cloud (Google Sheets) compare to using a desktop app like Excel?
+Did you encounter any compatibility issues (e.g., formatting, or layout not translating properly?
+7.  Submit Your Work
+Share the Sheet with your instructor and paste a link to your completed Google Sheets file, including the "Reflection" tab, using the assignment link in Canvas. Due Sunday, before 11:59pm.

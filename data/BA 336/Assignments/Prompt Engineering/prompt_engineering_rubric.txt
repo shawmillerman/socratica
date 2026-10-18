@@ -1,0 +1,29 @@
+================================================================================
+RUBRIC: Applied Prompt Engineering
+================================================================================
+
+1. The 4 Prompts & Outputs
+   - Points: 4 pts max
+   - Criteria Ratings:
+     * Full to Partial Credit: 0 to 4 pts
+     * No Marks: 0 pts
+
+--------------------------------------------------------------------------------
+
+2. Individual Prompt Reflections
+   - Points: 2 pts max
+   - Criteria Ratings:
+     * Full Marks: 2 pts
+     * No Marks: 0 pts
+
+--------------------------------------------------------------------------------
+
+3. Final Reflection
+   - Points: 2 pts max
+   - Criteria Ratings:
+     * Full Marks: 2 pts
+     * No Marks: 0 pts
+
+================================================================================
+TOTAL POINTS POSSIBLE: 8 pts
+================================================================================

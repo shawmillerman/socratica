@@ -1,0 +1,15 @@
+streamlit==1.65.0
+pandas==3.0.6
+openpyxl==3.1.5
+langchain==0.2.17
+langchain-community==0.2.19
+langchain-openai==0.1.25
+openai==1.109.1
+langchain-core==0.2.43
+langchain-text-splitters==0.2.4
+chromadb==1.5.9
+pypdf==6.20.0
+python-pptx==1.0.2
+python-dotenv==1.2.4
+docx2txt==0.9
+reportlab==5.0.1

@@ -1,0 +1,32 @@
+Source URL: https://www.ibm.com/think/insights/bridge-the-data-literacy-skills-gap-with-data-storytelling
+Title: Bridge the Data Literacy Skills Gap with Data storytelling
+
+Bridge the data literacy skills gap with data storytelling
+Mehdi Charafeddine
+Distinguished Engineer
+
+Global CTO for Data Platform Services Consulting
+
+Being a data-driven organization goes well beyond building a modern data architecture. With vast amounts of data flowing through the enterprise, the challenge lies in making sense of all of that complex information so that everyone, not just the data scientists or machine learning engineers, can interpret it for better decision-making.
+
+For CDOs and other leaders within different lines of business, this means fostering a culture that prioritizes data literacy: the ability to read, understand, create and communicate data. Too often, data is presented in mysterious figures that are difficult for key stakeholders to understand. In fact, poor data literacy is the second-biggest internal roadblock to the success of the CDO’s office, according to the 2021 Gartner Annual Chief Data Officer survey (link resides outside of ibm.com).
+
+To get data literacy right, organizations have to make data more approachable for non-technical experts. This means moving away from confusing charts, dashboards, graphs and complicated visuals. Instead, organizations need to humanize data and AI by creating visually compelling stories that resonate with people and transform data into actionable knowledge that drives business results.
+
+
+Bridging the data literacy gap with a culture of data storytelling
+Enter data storytelling, the ability to convey data not just with numbers but with engaging narratives and visuals. Creating a narrative context is important, because it brings data to life and ensures that the message it’s delivering is meaningful and relevant. Adding data visualization elements enhances the story and makes large amounts of data more digestible. When done right, data storytelling can be a powerful tool to communicate and demystify the data science.
+
+While organizations most often relay on a combination of UX/UI designers and BI specials, when non-technical business stakeholders start developing data storytelling skills it can spark a chain reaction across teams, LOBs and the organization as a whole. In that moment, one person with data storytelling skills will lead a group of individuals to make a better, data-driven decision, But those data savvy individuals also can impart their know-how to other coworkers and inspire their teammates to hone their data storytelling skills and shape their own daily workflows.
+
+This helps to cultivate a collaborative data-driven culture from within that gives business teams access to the strengths and skills of everyone to solve problems better and innovate faster.
+
+
+The power of established data-literacy initiatives and data storytelling programs
+Too often, business stakeholders blindly follow data created by algorithms. To make sure this doesn’t happen, organizations need experts who can challenge those algorithms by asking critical questions of the data and interpreting it correctly. Understanding and telling stories with data is a pivotal part of ensuring employees are still critically thinking about data, questioning it and interpreting it correctly, because it includes more people in the conversation.
+
+The resulting unified data-driven culture brings together data visualization specialists, data scientists and software developers, executive management and other stakeholders with the goal of everyone speaking a common language made of data.
+
+To create this culture of data literacy, organizations can start by developing a business strategy at the executive stakeholder level. Once the business strategy is clear, data leaders like the CDO can craft a data strategy that helps achieve those business goals that includes data literacy initiatives to ensure adoption and success.
+
+Launching data-literacy initiatives and data storytelling programs will help everyone, from the C-suite to all other key stakeholders, gain the skills needed to discover data insights, trends and patterns relevant to solving business problems. Training also empowers teams to use data as a competitive differentiator.

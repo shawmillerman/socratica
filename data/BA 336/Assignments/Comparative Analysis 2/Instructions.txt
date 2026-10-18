@@ -1,0 +1,12 @@
+Comparative Analysis #2. 
+
+This week, we're moving beyond simple AI queries to refine our human advantage. While the Assignment Guide already requires a role-based prompt, I want you to "level up" that interaction using one specific concept from this week's 5-minute video on Prompt EngineeringLinks to an external site..
+
+As you analyze Chapters 16 and 17 of the Gallaugher text, pay close attention to how your choice of prompt affects the quality of the output. You aren't just defining terms, you're engineering the data you receive.
+
+Make sure you have already read through Chapters 16 and 17 from the Information Systems: A Manager's Guide to Harnessing Technology v10.1 John Gallaugher
+Note: Chapter 18 and Emerging Technology is included in this assignment as a preview of upcoming content, so you are not expected to have read it yet.
+Carefully read through the Comparative Analysis Assignment GuideDownload Comparative Analysis Assignment Guide
+Select your critical terms from the word bank in the Critical Terms from Chapters 16, 17, 18, and Emerging TechDownload Critical Terms from Chapters 16, 17, 18, and Emerging Tech
+ document to jump-start your project.
+Follow the step-by-step instructions provided in the assignment guide. 

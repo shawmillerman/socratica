@@ -1,0 +1,45 @@
+================================================================================
+RUBRIC: Excel Project 2 Rubric
+================================================================================
+
+1. Kitchen/Dining Area sheet
+   - Points: 1 pt max
+   - Criteria Ratings:
+     * Full Marks: 1 to >0 pts
+     * No Marks: 0 pts
+
+--------------------------------------------------------------------------------
+
+2. Living Room sheet
+   - Points: 1 pt max
+   - Criteria Ratings:
+     * Full Marks: 1 to >0 pts
+     * No Marks: 0 pts
+
+--------------------------------------------------------------------------------
+
+3. Bedroom sheet
+   - Points: 1 pt max
+   - Criteria Ratings:
+     * Full Marks: 1 to >0 pts
+     * No Marks: 0 pts
+
+--------------------------------------------------------------------------------
+
+4. Summary sheet
+   - Points: 2 pts max
+   - Criteria Ratings:
+     * Full Marks: 2 to >0 pts
+     * No Marks: 0 pts
+
+--------------------------------------------------------------------------------
+
+5. Formatting
+   - Points: 1 pt max
+   - Criteria Ratings:
+     * Full Marks: 1 to >0 pts
+     * No Marks: 0 pts
+
+================================================================================
+TOTAL POINTS POSSIBLE: 6 pts
+================================================================================

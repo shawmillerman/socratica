@@ -1,0 +1,11 @@
+Excel Project 1: Vacation Loan Decision
+
+Overview: Create your own Excel workbook, using techniques from Chapters 1–3, to analyze whether taking out a loan for a dream vacation makes financial sense.
+
+Project Instructions: Find full details in the Excel Project #1 Instructions.Download Excel Project #1 Instructions.
+ Review carefully to make sure you include every required element.
+
+Resources: Refer to the Excel Best PracticesDownload Excel Best Practices
+ document and the Excel textbook content for best practices in worksheet layout, formulas, and documentation.
+
+Next Steps: Begin designing your workbook early. You’ll submit the completed project by the end of Week 5.

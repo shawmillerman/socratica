@@ -1,0 +1,53 @@
+================================================================================
+RUBRIC: Excel Project 1 Rubric
+================================================================================
+
+1. Sheet 1
+   - Points: 1 pt max
+   - Criteria Ratings:
+     * Full Marks (Range 0-1): 1 to >0 pts
+     * No Marks: 0 pts
+
+--------------------------------------------------------------------------------
+
+2. Sheet 2
+   - Points: 1 pt max
+   - Criteria Ratings:
+     * Full Marks (Range 0-1): 1 to >0 pts
+     * No Marks: 0 pts
+
+--------------------------------------------------------------------------------
+
+3. Sheet 3
+   - Points: 1 pt max
+   - Criteria Ratings:
+     * Full Marks (Range 0-1): 1 to >0 pts
+     * No Marks: 0 pts
+
+--------------------------------------------------------------------------------
+
+4. Formulas
+   - Points: 2 pts max
+   - Criteria Ratings:
+     * Full Marks (Range 0-2): 2 to >0 pts
+     * No Marks: 0 pts
+
+--------------------------------------------------------------------------------
+
+5. Trip Location & image
+   - Points: 0.5 pts max
+   - Criteria Ratings:
+     * Full Marks (Range 0-0.5): 0.5 to >0 pts
+     * No Marks: 0 pts
+
+--------------------------------------------------------------------------------
+
+6. Formatting
+   - Points: 0.5 pts max
+   - Criteria Ratings:
+     * Full Marks (Range 0-0.5): 0.5 to >0 pts
+     * No Marks: 0 pts
+
+================================================================================
+TOTAL POINTS POSSIBLE: 6 pts
+================================================================================
