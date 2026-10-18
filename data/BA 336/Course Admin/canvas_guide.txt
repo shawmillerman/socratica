@@ -1,0 +1,153 @@
+CANVAS COURSE GUIDE: HOW THE BA 336 CANVAS SITE IS ORGANIZED
+Course: BA-336U-HB1 Fall 2026 - Essentials of Information Technology for Non-Majors
+
+This guide explains where things are in the Canvas site for this course. Use it to answer "where do I find..." and "how do I get to..." questions. It describes the layout only. It does not include due dates or point values. For those, point students to the assignment page in Canvas, the Syllabus, or the Course Schedule.
+
+The tutor cannot see Canvas live. If a student describes something that does not match this guide, the layout may have changed, so tell them to check Canvas or the Announcements page, or to ask the instructor.
+
+
+1. THE COURSE MENU (LEFT SIDEBAR IN CANVAS)
+
+Students see these links in the course menu:
+- Home
+- Announcements
+- Modules
+- Discussions
+- Assignments
+- Secure Exam Proctor (Proctorio)
+- People
+- Grades
+- Zoom
+- SB Career Center Resources
+- Library Resources
+- Campus Resources
+
+The Syllabus, Quizzes and Pages links are NOT in the student menu. Students find the Syllabus, the Course Schedule, and all quizzes and exams by going through Modules (see below).
+
+The global Canvas menu on the far left (outside the course) has: Account, Dashboard, Courses, Calendar, Inbox, History, Commons, and Help.
+
+
+2. WHERE THE COURSE CONTENT LIVES: MODULES
+
+Almost everything is organized in Modules. The course has these modules, in order:
+Welcome to the Course Overview, Week 1 through Week 10, Proctorio Resources, Finals Week, and Student Resources.
+
+Q: Where do I find the syllabus or the course schedule?
+A: In the "Welcome to the Course Overview" module. Both are listed there as Pages (Syllabus and Course Schedule).
+
+Q: Where do I start if I am new to the course?
+A: The first item in the Welcome module is "Course Introduction (Start Here)".
+
+Q: Where do I find the instructor's contact information and how to communicate with the instructor?
+A: Welcome module, "Instructor Information & Communication Policy".
+
+Q: Where is the AI policy?
+A: Welcome module, "Course Overview: AI Policy".
+
+Q: Where do I go for help, or for accessibility and privacy information?
+A: Welcome module: "Course Overview: Where to go for help?" and "Course Overview: Accessibility Statements & Privacy Policies". The course menu also has Library Resources, Campus Resources and SB Career Center Resources.
+
+Q: Where do I ask a general question about the course?
+A: The "General Questions" discussion in the Welcome module, or the Discussions link in the course menu.
+
+Q: I use a Mac. Is there anything for me?
+A: The Welcome module has an external link called "VLAB (Mac Users)".
+
+
+3. WHAT EACH WEEKLY MODULE CONTAINS (WEEKS 1-10)
+
+Every weekly module has the same core items:
+- "Week N Overview" (a Page)
+- "Week N Reading" (a Page)
+- "Week N Watch/Listen" (a Page)
+- An "Apply" sub-header, under which that week's assignments are listed
+
+Some weeks also have a "Week N Slides" item, which is an external link. Slides links exist in Weeks 2, 3, 4, 6 and 7. Weeks 1, 5, 8, 9 and 10 do not have a slides link in the module.
+
+Slides link by week (a "Week N Slides" external link is in the module only where it says YES):
+Week 1: NO slides link. Use the Week 1 Reading and Week 1 Watch/Listen pages.
+Week 2: YES, Week 2 Slides.
+Week 3: YES, Week 3 Slides.
+Week 4: YES, Week 4 Slides.
+Week 5: NO slides link. Use the Week 5 Reading and Week 5 Watch/Listen pages.
+Week 6: YES, Week 6 Slides.
+Week 7: YES, Week 7 Slides.
+Week 8: NO slides link. Use the Week 8 Reading and Week 8 Watch/Listen pages.
+Week 9: NO slides link. Use the Week 9 Reading and Week 9 Watch/Listen pages.
+Week 10: NO slides link. Use the Week 10 Reading and Week 10 Watch/Listen pages.
+If a student asks for slides in a week marked NO, never say a slides link exists. Tell them to check that week's Overview and Announcements, or ask the instructor.
+
+Q: Where do I find the readings, the slides, or the videos for a week?
+A: Open that week's module in Modules. Use "Week N Reading" for the reading, "Week N Slides" (where it exists) for the slides, and "Week N Watch/Listen" for videos and audio. Start with "Week N Overview" when beginning a week.
+
+Q: Where do I find the assignments for a week?
+A: Under the "Apply" sub-header in that week's module. They are also listed under Assignments in the course menu.
+
+Assignments by week (names as they appear in Canvas):
+
+Week 1: CH1 Merchandise City Sales Data; PR1 Medical Office Budget; SC1 Sales and Inventory.
+
+Week 2: CH2 Personal Budget; PR2 Lawn Care; SC2 Hotel; Extra Credit: LinkedIn Profile Project.
+
+Week 3: Comparative Analysis of Critical Terms #1; CH3 Gradebook and Parks; PR3 Redding; SC3 MidasCoffee.
+
+Week 4: CH4 Charting; PR4 Historical Data; SC4 Sales.
+
+Week 5: CH5 HR Report; PR5 Canyon Trails; SC5 Dynamite Customer Sales; Excel Project 1: Vacation Loan Decision; Mid-Term Course Evaluation (a quiz, with 2 bonus points); Midterm Exam covering Chapters 1, 6, 10 and 11 (a quiz).
+
+Week 6: Comparative Analysis of Critical Terms #2; CH6 Personal Budget; PR6 Pacific NW Sports Team; SC6 National Parks.
+
+Week 7: Excel vs. Google Sheets: Practice 2.5 (Revisited); Information Systems in the News.
+
+Week 8: Excel Project 2: Apartment Furnishing Budget; and an optional but recommended external link to take the Google Phishing Quiz.
+
+Week 9: Applied Prompt Engineering; and an external link to the Prompt Engineering Reflection Worksheet (a Google Sheet).
+
+Week 10: Case Study: What's Driving Revenue? (a group project).
+
+Q: Where is the Midterm Exam?
+A: In the Week 5 module, under the "Apply" sub-header. It is a Canvas quiz covering Chapters 1, 6, 10 and 11. The Quizzes link is not in the student course menu, so students reach it through the Week 5 module. The Mid-Term Course Evaluation is in the same place.
+
+Q: Where do I find the Prompt Engineering Reflection Worksheet?
+A: In the Week 9 module, as an external link to a Google Sheet.
+
+Q: Where is the extra credit?
+A: The LinkedIn Profile Project extra credit assignment is in the Week 2 module.
+
+Q: Where do I submit an assignment?
+A: Open the assignment from its week's module (or from Assignments in the course menu) and use the Submit Assignment button on the assignment page. Check the assignment page for the allowed file types and instructions.
+
+Q: Where do I find my grades and feedback?
+A: Use Grades in the course menu. Instructor feedback appears on the individual assignment pages after grading.
+
+
+4. EXAMS AND PROCTORING
+
+The course menu has a "Secure Exam Proctor (Proctorio)" link. Exams in this course are remotely proctored.
+
+The "Proctorio Resources" module (after Week 10) contains:
+- Student Proctorio Guide (external link)
+- Student Proctorio Video Guide (external link)
+
+Q: How do I get ready for a proctored exam?
+A: Read the Student Proctorio Guide and watch the Student Proctorio Video Guide, both in the Proctorio Resources module.
+
+Q: Where is the instructor Proctorio guide?
+A: Students do not have access to it. Students should use the Student Proctorio Guide and the Student Proctorio Video Guide in the Proctorio Resources module.
+
+Q: Where is the final exam?
+A: In the "Finals Week" module. It contains "Finals Week Overview" (a Page) and, under the "Apply" sub-header, the Final Exam covering Chapters 15, 16, 17 and 18. It is remotely proctored. For the exam date and time, check the Finals Week Overview, the syllabus, and Announcements.
+
+
+5. OTHER MODULES
+
+Student Resources module: contains the "Student Events Calendar" (a Page).
+
+
+6. HOW THE PIECES FIT TOGETHER
+
+- Modules is the main path. Open the week you want and work down: Overview, Reading, Watch/Listen, Slides (if present), then Apply.
+- Assignments (course menu) shows the same assignments in a list. Use it to see everything at once.
+- Announcements has official updates. Check it first when something seems out of date.
+- Grades shows scores.
+- Calendar (global menu) shows due dates across courses.
