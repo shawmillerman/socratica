@@ -20,7 +20,7 @@ from langchain_core.documents import Document
 from utils.study_package import generate_study_package, format_transcript
 from utils.pdf_generator import create_study_worksheet
 from utils.ppt_generator import create_practice_deck
-from utils.writing_tutor import DraftError, SUPPORTED_TYPES, clean_draft_text, extract_draft_text, load_style_guide, review_draft
+from utils.writing_tutor import DraftError, SUPPORTED_TYPES, clean_draft_text, extract_draft_text, list_assignments, load_assignment_context, load_style_guide, review_draft
 
 load_dotenv()
 
@@ -310,7 +310,18 @@ with st.sidebar:
         draft_file = st.file_uploader("Upload a draft (.docx, .pdf or .txt)", type=SUPPORTED_TYPES, key="draft_file")
     else:
         draft_pasted = st.text_area("Paste your draft here", height=200, key="draft_pasted")
-    draft_assignment = st.text_input("Assignment (optional)", key="draft_assignment")
+    assignment_folders = list_assignments(course_path) if selected_course else []
+    OTHER = "Other / not listed"
+    assignment_choice = st.selectbox(
+        "Which assignment is this for?", [OTHER] + assignment_folders,
+        format_func=lambda x: x if x == OTHER else _pretty(x), key="draft_assignment_choice",
+    )
+    if assignment_choice == OTHER:
+        draft_assignment = st.text_input("Assignment name (optional)", key="draft_assignment").strip()
+        assignment_context = None
+    else:
+        draft_assignment = _pretty(assignment_choice)
+        assignment_context = load_assignment_context(course_path, assignment_choice)
     has_draft = draft_file is not None if draft_source == "Upload file" else bool((draft_pasted or "").strip())
     if st.button("Get Writing Feedback", disabled=not has_draft or not selected_course, key="draft_go"):
         try:
@@ -318,11 +329,11 @@ with st.sidebar:
                 draft_text = extract_draft_text(draft_file) if draft_file is not None else clean_draft_text(draft_pasted)
                 feedback = review_draft(
                     draft_text, _pretty(selected_course), load_style_guide(course_path),
-                    assignment=draft_assignment.strip() or None, api_key=api_key,
+                    assignment=draft_assignment or None, assignment_context=assignment_context, api_key=api_key,
                 )
             note = f"I submitted a draft for writing feedback: {draft_file.name if draft_file is not None else 'pasted text'}"
-            if draft_assignment.strip():
-                note += f" ({draft_assignment.strip()})"
+            if draft_assignment:
+                note += f" ({draft_assignment})"
             st.session_state["chat_history"].append(HumanMessage(content=note))
             st.session_state["chat_history"].append(AIMessage(content=feedback))
             st.rerun()
