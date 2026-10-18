@@ -1,7 +1,7 @@
 import os
 import re
 import sys
-from datetime import datetime, date
+from datetime import datetime, date, timedelta
 import hashlib
 import shutil
 import streamlit as st
@@ -43,6 +43,7 @@ SHEET_SAMPLE_ROWS = 5
 OFFER_TOKEN = "[[OFFER_STUDY_PACKAGE]]"
 APP_TIMEZONE = "America/New_York"
 TERM_START_FILE = "term_start.txt"  # one line per course folder: the first day of Week 1, as YYYY-MM-DD
+TERM_WEEKS = 11
 EXPORT_FORMATS = {
     "PDF": ("pdf", "application/pdf"),
     "PPTX": ("pptx", "application/vnd.openxmlformats-officedocument.presentationml.presentation"),
@@ -78,9 +79,30 @@ def _calendar_context(course_path):
         term_info = f"The term has not started yet; Week 1 begins {start:%A, %B %d, %Y}."
     else:
         week = (today - start).days // 7 + 1
+        def _week_line(n):
+            first, last = start + timedelta(days=7 * (n - 1)), start + timedelta(days=7 * n - 1)
+            gap = (today - last).days
+            if gap > 0:
+                note = f"Sunday {last:%b %d} was {gap} day{'s' if gap != 1 else ''} ago"
+            elif gap == 0:
+                note = "Sunday is today"
+            else:
+                note = f"Sunday {last:%b %d} is in {-gap} day{'s' if gap != -1 else ''}"
+            return f"Week {n}: {first:%a %b %d} to {last:%a %b %d, %Y} ({note})"
+
+        weeks = "\n".join(_week_line(n) for n in range(1, TERM_WEEKS + 1))
         term_info = (
             f"Week 1 of the term began {start:%A, %B %d, %Y}, so today falls in Week {week}. "
-            "If that is beyond the last week on the course schedule, the term is over."
+            f"If that is beyond Week {TERM_WEEKS}, the term is over.\n"
+            "Calendar dates for each week (Monday to Sunday):\n"
+            f"{weeks}\n"
+            "The schedule lists work under a week heading with a weekday, for example \"due Sunday\" under Week 2. "
+            "That means the Sunday that ends that week in the table above. When a student asks whether something is "
+            "due, late, or past a deadline, find its due date from this table, apply the late policy in the syllabus "
+            "to get the cutoff, and compare using the \"days ago\" figure in the table: the late window is still open only if that "
+            "figure is no larger than the window length (for a 5-day window, 5 days ago is still open and 6 days ago "
+            "is closed). State the dates you used. If the materials "
+            "give conflicting late-policy details, say so and point the student to the instructor."
         )
     return {"today": f"{today:%A, %B %d, %Y}", "term_info": term_info}
 
