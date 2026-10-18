@@ -4,7 +4,7 @@
 # Vector databases & local data files
 # Course materials are committed except answer keys (never indexed) and the parked BA 101 course.
 # Keep the repository PRIVATE: it contains copyrighted textbook content.
-/data/BA 101/
+/data/ba_101/
 **/[Aa]nswer[ _-][Kk]ey*/
 **/*[Aa]nswer[ _-][Kk]ey*
 chroma/
