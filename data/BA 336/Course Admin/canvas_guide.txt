@@ -30,7 +30,7 @@ The global Canvas menu on the far left (outside the course) has: Account, Dashbo
 2. WHERE THE COURSE CONTENT LIVES: MODULES
 
 Almost everything is organized in Modules. The course has these modules, in order:
-Welcome to the Course Overview, Week 1 through Week 10, Proctorio Resources, Finals Week, and Student Resources.
+Welcome to the Course Overview, Week 1 through Week 10, Finals Week, and Student Resources.
 
 Q: Where do I find the syllabus or the course schedule?
 A: In the "Welcome to the Course Overview" module. Both are listed there as Pages (Syllabus and Course Schedule).
@@ -124,16 +124,6 @@ A: Use Grades in the course menu. Instructor feedback appears on the individual 
 4. EXAMS AND PROCTORING
 
 The course menu has a "Secure Exam Proctor (Proctorio)" link. Exams in this course are remotely proctored.
-
-The "Proctorio Resources" module (after Week 10) contains:
-- Student Proctorio Guide (external link)
-- Student Proctorio Video Guide (external link)
-
-Q: How do I get ready for a proctored exam?
-A: Read the Student Proctorio Guide and watch the Student Proctorio Video Guide, both in the Proctorio Resources module.
-
-Q: Where is the instructor Proctorio guide?
-A: Students do not have access to it. Students should use the Student Proctorio Guide and the Student Proctorio Video Guide in the Proctorio Resources module.
 
 Q: Where is the final exam?
 A: In the "Finals Week" module. It contains "Finals Week Overview" (a Page) and, under the "Apply" sub-header, the Final Exam covering Chapters 15, 16, 17 and 18. It is remotely proctored. For the exam date and time, check the Finals Week Overview, the syllabus, and Announcements.
