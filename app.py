@@ -88,7 +88,10 @@ def _calendar_context(course_path):
                 note = "Sunday is today"
             else:
                 note = f"Sunday {last:%b %d} is in {-gap} day{'s' if gap != -1 else ''}"
-            return f"Week {n}: {first:%a %b %d} to {last:%a %b %d, %Y} ({note})"
+            return (
+                f"Week {n}: {first:%a %b %d} to {last:%a %b %d, %Y} "
+                f"(Wednesday {first + timedelta(days=2):%b %d}, Friday {first + timedelta(days=4):%b %d}; {note})"
+            )
 
         weeks = "\n".join(_week_line(n) for n in range(1, TERM_WEEKS + 1))
         term_info = (

@@ -123,7 +123,7 @@ A: Use Grades in the course menu. Instructor feedback appears on the individual 
 4. FINAL EXAM
 
 Q: Where is the final exam?
-A: In the "Finals Week" module. It contains "Finals Week Overview" (a Page) and, under the "Apply" sub-header, the Final Exam covering Chapters 15, 16, 17 and 18. For the exam date and time, check the Finals Week Overview, the syllabus, and Announcements.
+A: In the "Finals Week" module. It contains "Finals Week Overview" (a Page) and, under the "Apply" sub-header, the Final Exam covering Chapters 15, 16, 17 and 18. The Final Exam is due on the Friday of Week 11, which is finals week. For the exam format and any other details, check the Finals Week Overview, the syllabus, and Announcements.
 
 
 5. OTHER MODULES
