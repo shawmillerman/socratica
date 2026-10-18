@@ -14,7 +14,6 @@ Students see these links in the course menu:
 - Modules
 - Discussions
 - Assignments
-- Secure Exam Proctor (Proctorio)
 - People
 - Grades
 - Zoom
@@ -121,12 +120,10 @@ Q: Where do I find my grades and feedback?
 A: Use Grades in the course menu. Instructor feedback appears on the individual assignment pages after grading.
 
 
-4. EXAMS AND PROCTORING
-
-The course menu has a "Secure Exam Proctor (Proctorio)" link. Exams in this course are remotely proctored.
+4. FINAL EXAM
 
 Q: Where is the final exam?
-A: In the "Finals Week" module. It contains "Finals Week Overview" (a Page) and, under the "Apply" sub-header, the Final Exam covering Chapters 15, 16, 17 and 18. It is remotely proctored. For the exam date and time, check the Finals Week Overview, the syllabus, and Announcements.
+A: In the "Finals Week" module. It contains "Finals Week Overview" (a Page) and, under the "Apply" sub-header, the Final Exam covering Chapters 15, 16, 17 and 18. For the exam date and time, check the Finals Week Overview, the syllabus, and Announcements.
 
 
 5. OTHER MODULES
