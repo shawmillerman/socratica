@@ -20,6 +20,7 @@ from langchain_core.documents import Document
 from utils.study_package import generate_study_package, format_transcript
 from utils.pdf_generator import create_study_worksheet
 from utils.ppt_generator import create_practice_deck
+from utils.writing_tutor import DraftError, SUPPORTED_TYPES, clean_draft_text, extract_draft_text, load_style_guide, review_draft
 
 load_dotenv()
 
@@ -297,6 +298,38 @@ with st.sidebar:
         st.session_state["chat_sources"] = {}
         st.session_state["export_offers"] = set()
         st.session_state.pop("export", None)
+
+    # -------------------------------------------------------------------------
+    # Writing Feedback (draft upload)
+    # -------------------------------------------------------------------------
+    st.markdown("---")
+    st.subheader("Writing Feedback")
+    draft_source = st.radio("Draft source", ["Upload file", "Paste text"], horizontal=True, key="draft_source")
+    draft_file = draft_pasted = None
+    if draft_source == "Upload file":
+        draft_file = st.file_uploader("Upload a draft (.docx, .pdf or .txt)", type=SUPPORTED_TYPES, key="draft_file")
+    else:
+        draft_pasted = st.text_area("Paste your draft here", height=200, key="draft_pasted")
+    draft_assignment = st.text_input("Assignment (optional)", key="draft_assignment")
+    has_draft = draft_file is not None if draft_source == "Upload file" else bool((draft_pasted or "").strip())
+    if st.button("Get Writing Feedback", disabled=not has_draft or not selected_course, key="draft_go"):
+        try:
+            with st.spinner("Reading your draft..."):
+                draft_text = extract_draft_text(draft_file) if draft_file is not None else clean_draft_text(draft_pasted)
+                feedback = review_draft(
+                    draft_text, _pretty(selected_course), load_style_guide(course_path),
+                    assignment=draft_assignment.strip() or None, api_key=api_key,
+                )
+            note = f"I submitted a draft for writing feedback: {draft_file.name if draft_file is not None else 'pasted text'}"
+            if draft_assignment.strip():
+                note += f" ({draft_assignment.strip()})"
+            st.session_state["chat_history"].append(HumanMessage(content=note))
+            st.session_state["chat_history"].append(AIMessage(content=feedback))
+            st.rerun()
+        except DraftError as e:
+            st.warning(str(e))
+        except Exception as e:
+            st.error(f"Could not review the draft: {e}")
 
     # -------------------------------------------------------------------------
     # 2. Study & Review Exports
