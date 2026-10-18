@@ -42,24 +42,32 @@ INDEX_VERSION = "3"  # bump whenever ingestion/chunking changes so cached indexe
 SHEET_SAMPLE_ROWS = 5
 OFFER_TOKEN = "[[OFFER_STUDY_PACKAGE]]"
 APP_TIMEZONE = "America/New_York"
-# First day of Week 1 for each course, so Socratica can say which week it is. Without an entry she will
-# not guess the week.
-TERM_START_DATES = {"BA 336": date(2026, 9, 28)}
+TERM_START_FILE = "term_start.txt"  # one line per course folder: the first day of Week 1, as YYYY-MM-DD
 EXPORT_FORMATS = {
     "PDF": ("pdf", "application/pdf"),
     "PPTX": ("pptx", "application/vnd.openxmlformats-officedocument.presentationml.presentation"),
 }
 
 
-def _calendar_context(course):
-    """Today's date plus, when the course's term start is configured, the current week number."""
+def _read_term_start(course_path):
+    """First YYYY-MM-DD date in the course's term_start.txt, or None if the file is missing or unreadable."""
+    try:
+        with open(os.path.join(course_path, TERM_START_FILE), encoding="utf-8") as f:
+            match = re.search(r"\d{4}-\d{2}-\d{2}", f.read())
+        return date.fromisoformat(match.group(0)) if match else None
+    except (OSError, ValueError):
+        return None
+
+
+def _calendar_context(course_path):
+    """Today's date plus, when the course has a term_start.txt, the current week number."""
     try:
         from zoneinfo import ZoneInfo
         now = datetime.now(ZoneInfo(APP_TIMEZONE))
     except Exception:
         now = datetime.now()
     today = now.date()
-    start = TERM_START_DATES.get(course)
+    start = _read_term_start(course_path)
     if start is None:
         term_info = (
             "The course schedule lists topics by week number only, with no calendar dates, so you do NOT know which "
@@ -304,7 +312,11 @@ def load_docs(path):
                     st.warning(f"Failed to read PPTX file {file}: {e}")
 
     # Single choke point: whatever the loaders picked up, answer keys never get indexed.
-    documents = [d for d in documents if not _is_answer_key(d.metadata.get("source", ""))]
+    documents = [
+        d for d in documents
+        if not _is_answer_key(d.metadata.get("source", ""))
+        and os.path.basename(d.metadata.get("source", "")) != TERM_START_FILE
+    ]
 
     if not documents:
         return None
@@ -440,7 +452,7 @@ BE HONEST ABOUT WHAT YOU KNOW:
             response = rag_chain.invoke({
                 "input": user_input,
                 "chat_history": st.session_state["chat_history"],
-                **_calendar_context(selected_course),
+                **_calendar_context(course_path),
             })
         sources = _format_sources(response.get("context", []))
         answer = response["answer"]
