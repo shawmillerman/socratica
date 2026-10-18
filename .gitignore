@@ -32,3 +32,6 @@ __pycache__/
 .claude/
 .agents/
 course_guidelines.txt
+
+# Private planning notes
+BACKLOG.md
