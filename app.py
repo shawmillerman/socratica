@@ -143,21 +143,21 @@ def _download_export(key):
         )
 
 
-st.set_page_config(page_title="Socratica | Your Socratic Study Guide", layout="wide")
+st.set_page_config(page_title="Socratica | Interactive Course Companion", layout="wide")
 
 if sys.version_info[:2] != (3, 12):
     st.error(f"Socratica is pinned to Python 3.12 (running {sys.version.split()[0]}). Use the 3.12 virtual environment or set Python 3.12 in the deployment settings.")
     st.stop()
 
 st.title("Socratica")
-st.caption("Your Socratic Study Guide")
+st.caption("Interactive Course Companion")
 
 # =============================================================================
 # Sidebar Section
 # =============================================================================
 with st.sidebar:
     st.title("Socratica")
-    st.caption("Your Socratic Study Guide")
+    st.caption("Interactive Course Companion")
     
     # -------------------------------------------------------------------------
     # 1. Course Selection
