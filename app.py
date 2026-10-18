@@ -177,6 +177,21 @@ def _calendar_context(course_path):
             f"{w_last:%A, %B %d, %Y}; \"Friday of Week {TERM_WEEKS}\" (the Final Exam due date, finals week) is "
             f"{w_last + timedelta(days=4):%A, %B %d, %Y}.\n\n"
         )
+        def _rel(n):
+            return {-1: "LAST WEEK", 0: "THIS WEEK", 1: "NEXT WEEK"}.get(n - week, "")
+
+        full = "\n\n".join(
+            f"=== Week {n}{' (' + _rel(n) + ')' if _rel(n) else ''}: "
+            f"{start + timedelta(days=7 * (n - 1)):%b %d} to {start + timedelta(days=7 * n - 1):%b %d} ===\n{text}"
+            for n, text in sorted(_schedule_weeks_for(course_path).items())
+        )
+        index += (
+            "FULL COURSE SCHEDULE BY WEEK (topics, required reading, required videos, and assignments for every week, "
+            "copied from the course schedule). Use it for any question about what a given week covers, including "
+            "\"this week\", \"next week\" and \"last week\". When describing a week, include its topics, required "
+            "reading, required videos, and assignments, not just the assignments. Weeks run Monday to Sunday.\n"
+            f"{full}\n\n"
+        ) if full else ""
         due_now = [r for r in rows if "DUE TODAY" in r]
         this_week = (
             f"This is Week {week}, ending Sunday {sunday:%B %d}. "
