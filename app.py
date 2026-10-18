@@ -1,6 +1,7 @@
 import os
 import re
 import sys
+from datetime import datetime, date
 import hashlib
 import shutil
 import streamlit as st
@@ -40,10 +41,40 @@ RETRIEVER_K = 10  # chunks per question; high enough to cover most of a textbook
 INDEX_VERSION = "3"  # bump whenever ingestion/chunking changes so cached indexes rebuild
 SHEET_SAMPLE_ROWS = 5
 OFFER_TOKEN = "[[OFFER_STUDY_PACKAGE]]"
+APP_TIMEZONE = "America/New_York"
+# First day of Week 1 for each course, so Socratica can say which week it is. Without an entry she will
+# not guess the week.
+TERM_START_DATES = {"BA 336": date(2026, 9, 28)}
 EXPORT_FORMATS = {
     "PDF": ("pdf", "application/pdf"),
     "PPTX": ("pptx", "application/vnd.openxmlformats-officedocument.presentationml.presentation"),
 }
+
+
+def _calendar_context(course):
+    """Today's date plus, when the course's term start is configured, the current week number."""
+    try:
+        from zoneinfo import ZoneInfo
+        now = datetime.now(ZoneInfo(APP_TIMEZONE))
+    except Exception:
+        now = datetime.now()
+    today = now.date()
+    start = TERM_START_DATES.get(course)
+    if start is None:
+        term_info = (
+            "The course schedule lists topics by week number only, with no calendar dates, so you do NOT know which "
+            "week of the term it is right now. Never state or guess the current week. If asked, say so, then either "
+            "list what the schedule says for the weeks they name or ask which week they are in."
+        )
+    elif today < start:
+        term_info = f"The term has not started yet; Week 1 begins {start:%A, %B %d, %Y}."
+    else:
+        week = (today - start).days // 7 + 1
+        term_info = (
+            f"Week 1 of the term began {start:%A, %B %d, %Y}, so today falls in Week {week}. "
+            "If that is beyond the last week on the course schedule, the term is over."
+        )
+    return {"today": f"{today:%A, %B %d, %Y}", "term_info": term_info}
 
 
 def _build_export(fmt, course, include_questions=True, include_definitions=True, include_transcript=False, source="sidebar"):
@@ -347,6 +378,9 @@ If their understanding is only partly correct, affirm the correct part and ask a
 EXPLAINING COURSE CONTENT IS ALLOWED:
 The Socratic rules above apply to graded or assigned work (homework, quizzes, projects, and textbook practice or scored exercises). They do NOT apply to teaching content. When a student asks for a summary, overview, or explanation of a textbook chapter, section, slide deck, or concept, give it directly: a short high-level overview, then the key ideas and the important functions, formulas, or terms the material covers, each with a one-line description of what it is for and its syntax or general form. Never refuse or deflect these requests. Base the overview only on the excerpts below; if they clearly cover only some sections of what was asked, summarize those, name which sections you covered, and offer to go deeper on the rest. After the overview, end with one short question that invites the student to try applying an idea. Do not use this to solve a specific assignment or practice problem for them.
 
+TODAY'S DATE AND THE COURSE CALENDAR:
+Today's date is {today}. {term_info}
+
 COURSE MATERIALS:
 Use the course materials below to ground your questions, hints, and explanations in what this course actually teaches. For assigned work, treat them as background for guiding the student rather than a script to read answers from.
 Each excerpt starts with a "[Source: ...]" line showing where it comes from in the course (for example a textbook chapter, an assignment, or a rubric). Use it to tell these apart, and do not mix up a textbook practice exercise with a separate course assignment.
@@ -358,7 +392,7 @@ OFFERING A STUDY PACKAGE:
 Only when you have just reinforced a concept the student has demonstrated understanding of (see above), and you have not already offered for this topic, end your reply with a final line containing exactly [[OFFER_STUDY_PACKAGE]] and nothing else. Never mention or explain this marker, and never include it otherwise.
 
 BE HONEST ABOUT WHAT YOU KNOW:
-- Never say or imply that the student told you something they did not say. Only refer to what they actually wrote in this conversation.
+- Never say or imply that the student told you something they did not say. The course materials come from the course itself, not from the student, so never say they "provided" or "uploaded" a schedule or any file; call it "the course schedule" or "the syllabus". Only refer to what they actually wrote in this conversation.
 - Only mention files, assignments, or data sets that appear in the course materials below. Do not guess or invent them.
 - If the materials do not clearly answer the question, or the question could refer to more than one item (for example both a textbook practice exercise and a course assignment), say briefly what you found, name the options, and ask the student which one they mean before going further.
 
@@ -405,7 +439,8 @@ BE HONEST ABOUT WHAT YOU KNOW:
         with st.spinner("Thinking..."):
             response = rag_chain.invoke({
                 "input": user_input,
-                "chat_history": st.session_state["chat_history"]
+                "chat_history": st.session_state["chat_history"],
+                **_calendar_context(selected_course),
             })
         sources = _format_sources(response.get("context", []))
         answer = response["answer"]
