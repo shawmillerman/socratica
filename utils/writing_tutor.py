@@ -7,6 +7,8 @@ from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_openai import ChatOpenAI
 from pypdf import PdfReader
 
+from utils.instructions import load_instruction
+
 WRITING_MODEL = "gpt-4o"
 SUPPORTED_TYPES = ["docx", "pdf", "txt"]
 MAX_DRAFT_CHARS = 30000
@@ -112,7 +114,7 @@ def load_assignment_context(course_path, folder):
 
 def review_draft(draft_text, course_name, style_guide, assignment=None, assignment_context=None, api_key=None):
     """Writing feedback (markdown) for a student's draft."""
-    system = PROMPT_FILE.read_text(encoding="utf-8").replace("{course}", course_name)
+    system = PROMPT_FILE.read_text(encoding="utf-8").replace("{course}", course_name).replace("{voice}", load_instruction("voice/tone_and_encouragement"))
     if "{style_guide}" in system:
         system = system.replace("{style_guide}", style_guide or NO_STYLE_GUIDE)
     elif style_guide:
