@@ -250,9 +250,10 @@ with st.sidebar:
     st.markdown("---")
     st.subheader("Writing Feedback")
     st.caption(
-        "Get feedback on a draft: what is working, and questions to guide your revision. "
-        "It checks your draft against the department style guide and the assignment's requirements. "
-        "It does not rewrite your draft or grade it."
+        "Upload your draft to get feedback: what is working, what is not working, and questions to guide your revision. "
+        "Your draft will get checked against the department style guide and the assignment rubric. "
+        "It does not rewrite your draft or grade it. "
+        "Paste text or upload your file first, then click 'Get Feedback' to see the review. You can also paste your draft text directly."
     )
     draft_source = st.radio("Draft source", ["Upload file", "Paste text"], horizontal=True, key="draft_source")
     draft_file = draft_pasted = None
@@ -260,7 +261,7 @@ with st.sidebar:
         draft_file = st.file_uploader("Upload a draft (.docx, .pdf or .txt)", type=SUPPORTED_TYPES, key="draft_file")
     else:
         draft_pasted = st.text_area("Paste your draft here", height=200, key="draft_pasted")
-    st.caption(f"Drafts up to {MAX_DRAFT_CHARS:,} characters.")
+        st.caption(f"Drafts up to {MAX_DRAFT_CHARS:,} characters.")
     assignment_folders = list_assignments(course_path) if selected_course else []
     OTHER = "Other / Not Listed"
     assignment_choice = st.selectbox(
@@ -275,7 +276,7 @@ with st.sidebar:
         draft_assignment = _pretty(assignment_choice)
         assignment_context = load_assignment_context(course_path, assignment_choice)
     has_draft = draft_file is not None if draft_source == "Upload file" else bool((draft_pasted or "").strip())
-    if st.button("Get Writing Feedback", disabled=not has_draft or not selected_course, key="draft_go"):
+    if st.button("Get Feedback", disabled=not has_draft or not selected_course, key="draft_go"):
         try:
             with st.spinner("Reading your draft..."):
                 draft_text = extract_draft_text(draft_file) if draft_file is not None else clean_draft_text(draft_pasted)
