@@ -18,7 +18,7 @@ from langchain_core.messages import HumanMessage, AIMessage
 from langchain_core.documents import Document
 from utils.instructions import build_tutor_system_prompt
 from utils.llm import get_chat_model, get_embeddings
-from utils.writing_tutor import DraftError, SUPPORTED_TYPES, clean_draft_text, extract_draft_text, list_assignments, load_assignment_context, load_style_guide, review_draft
+from utils.writing_tutor import DraftError, MAX_DRAFT_CHARS, SUPPORTED_TYPES, clean_draft_text, extract_draft_text, list_assignments, load_assignment_context, load_style_guide, review_draft
 
 load_dotenv()
 CHROMA_DIR = "./chroma"
@@ -249,20 +249,27 @@ with st.sidebar:
     # -------------------------------------------------------------------------
     st.markdown("---")
     st.subheader("Writing Feedback")
+    st.caption(
+        "Get feedback on a draft: what is working, and questions to guide your revision. "
+        "It checks your draft against the department style guide and the assignment's requirements. "
+        "It does not rewrite your draft or grade it."
+    )
     draft_source = st.radio("Draft source", ["Upload file", "Paste text"], horizontal=True, key="draft_source")
     draft_file = draft_pasted = None
     if draft_source == "Upload file":
         draft_file = st.file_uploader("Upload a draft (.docx, .pdf or .txt)", type=SUPPORTED_TYPES, key="draft_file")
     else:
         draft_pasted = st.text_area("Paste your draft here", height=200, key="draft_pasted")
+    st.caption(f"Drafts up to {MAX_DRAFT_CHARS:,} characters.")
     assignment_folders = list_assignments(course_path) if selected_course else []
-    OTHER = "Other / not listed"
+    OTHER = "Other / Not Listed"
     assignment_choice = st.selectbox(
         "Which assignment is this for?", [OTHER] + assignment_folders,
         format_func=lambda x: x if x == OTHER else _pretty(x), key="draft_assignment_choice",
+        help="Pick the assignment so the review can check your draft against its instructions and rubric.",
     )
     if assignment_choice == OTHER:
-        draft_assignment = st.text_input("Assignment name (optional)", key="draft_assignment").strip()
+        draft_assignment = ""
         assignment_context = None
     else:
         draft_assignment = _pretty(assignment_choice)
