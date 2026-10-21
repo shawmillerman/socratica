@@ -24,8 +24,6 @@ __pycache__/
 .streamlit/secrets.toml
 
 # Generated exports and scratch files
-*_study_package.pdf
-*_study_package.pptx
 *.log
 
 # Local tooling and instructor-only notes
