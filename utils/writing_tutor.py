@@ -4,12 +4,11 @@ from pathlib import Path
 
 import docx2txt
 from langchain_core.messages import HumanMessage, SystemMessage
-from langchain_openai import ChatOpenAI
 from pypdf import PdfReader
 
 from utils.instructions import load_instruction
+from utils.llm import get_chat_model
 
-WRITING_MODEL = "gpt-4o"
 SUPPORTED_TYPES = ["docx", "pdf", "txt"]
 MAX_DRAFT_CHARS = 30000
 PROMPT_FILE = Path(__file__).with_name("writing_tutor_prompt.txt")
@@ -112,7 +111,7 @@ def load_assignment_context(course_path, folder):
     return "\n\n".join(parts)
 
 
-def review_draft(draft_text, course_name, style_guide, assignment=None, assignment_context=None, api_key=None):
+def review_draft(draft_text, course_name, style_guide, assignment=None, assignment_context=None):
     """Writing feedback (markdown) for a student's draft."""
     system = PROMPT_FILE.read_text(encoding="utf-8").replace("{course}", course_name).replace("{voice}", load_instruction("voice/tone_and_encouragement"))
     if "{style_guide}" in system:
@@ -127,7 +126,7 @@ def review_draft(draft_text, course_name, style_guide, assignment=None, assignme
             "or pointer. Never supply content for the assignment and never say whether the draft's analysis is correct."
         )
     label = f"Assignment: {assignment}\n\n" if assignment else ""
-    llm = ChatOpenAI(model=WRITING_MODEL, temperature=0.2, openai_api_key=api_key)
+    llm = get_chat_model("writing_feedback")
     reply = llm.invoke([
         SystemMessage(content=system),
         HumanMessage(content=f"{label}STUDENT DRAFT (review this text only):\n\n{draft_text}"),
