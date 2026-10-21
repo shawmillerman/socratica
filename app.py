@@ -18,9 +18,6 @@ from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.messages import HumanMessage, AIMessage
 from langchain_core.documents import Document
 from utils.instructions import build_tutor_system_prompt
-from utils.study_package import generate_study_package, format_transcript
-from utils.pdf_generator import create_study_worksheet
-from utils.ppt_generator import create_practice_deck
 from utils.writing_tutor import DraftError, SUPPORTED_TYPES, clean_draft_text, extract_draft_text, list_assignments, load_assignment_context, load_style_guide, review_draft
 
 load_dotenv()
@@ -42,14 +39,9 @@ HIDDEN_COURSES = {"ba_101"}  # parked course folders: kept in ./data but not sho
 RETRIEVER_K = 10  # chunks per question; high enough to cover most of a textbook chapter for overviews
 INDEX_VERSION = "3"  # bump whenever ingestion/chunking changes so cached indexes rebuild
 SHEET_SAMPLE_ROWS = 5
-OFFER_TOKEN = "[[OFFER_STUDY_PACKAGE]]"
 APP_TIMEZONE = "America/New_York"
 TERM_START_FILE = "term_start.txt"  # one line per course folder: the first day of Week 1, as YYYY-MM-DD
 TERM_WEEKS = 11
-EXPORT_FORMATS = {
-    "PDF": ("pdf", "application/pdf"),
-    "PPTX": ("pptx", "application/vnd.openxmlformats-officedocument.presentationml.presentation"),
-}
 
 
 def _pretty(name):
@@ -220,39 +212,6 @@ def _calendar_context(course_path):
     return {"today": f"{today:%A, %B %d, %Y}", "term_info": term_info}
 
 
-def _build_export(fmt, course, include_questions=True, include_definitions=True, include_transcript=False, source="sidebar"):
-    """Generate a study package from the current chat and store the finished file in session_state."""
-    history = st.session_state["chat_history"]
-    try:
-        with st.spinner("Building your study package..."):
-            package = generate_study_package(history, course, api_key=api_key)
-            transcript = format_transcript(history) if include_transcript else None
-            build = create_study_worksheet if fmt == "PDF" else create_practice_deck
-            buffer = build(package, course, include_questions, include_definitions, transcript)
-    except Exception as e:
-        st.session_state.pop("export", None)
-        st.error(f"Could not build the study package: {e}")
-        return False
-    ext, mime = EXPORT_FORMATS[fmt]
-    slug = re.sub(r"[^A-Za-z0-9]+", "_", course).strip("_").lower() or "course"
-    st.session_state["export"] = {
-        "bytes": buffer.getvalue(),
-        "filename": f"{slug}_study_package.{ext}",
-        "mime": mime,
-        "source": source,
-    }
-    return True
-
-
-def _download_export(key):
-    export = st.session_state.get("export")
-    if export:
-        st.download_button(
-            "Download " + export["filename"], data=export["bytes"], file_name=export["filename"],
-            mime=export["mime"], key=key,
-        )
-
-
 st.set_page_config(page_title="Socratica | Interactive Course Companion", layout="wide")
 
 if sys.version_info[:2] != (3, 12):
@@ -297,8 +256,6 @@ with st.sidebar:
         st.session_state["current_course"] = selected_course
         st.session_state["chat_history"] = []
         st.session_state["chat_sources"] = {}
-        st.session_state["export_offers"] = set()
-        st.session_state.pop("export", None)
 
     # -------------------------------------------------------------------------
     # Writing Feedback (draft upload)
@@ -343,26 +300,6 @@ with st.sidebar:
         except Exception as e:
             st.error(f"Could not review the draft: {e}")
 
-    # -------------------------------------------------------------------------
-    # 2. Study & Review Exports
-    # -------------------------------------------------------------------------
-    st.markdown("---")
-    st.subheader("Study & Review Exports")
-    has_chat = bool(st.session_state["chat_history"])
-
-    export_format = st.radio("Format", ["PDF", "PPTX"], horizontal=True, key="export_format")
-    include_questions = st.checkbox("Include Practice Questions", value=True, key="opt_questions")
-    include_definitions = st.checkbox("Include Concept Definitions", value=True, key="opt_definitions")
-    include_transcript = st.checkbox("Include Session Transcript", value=False, key="opt_transcript")
-
-    if not has_chat:
-        st.caption("Chat with Socratica first, then generate a study package from the conversation.")
-    if st.button("Generate Study Package", disabled=not has_chat, key="gen_sidebar"):
-        _build_export(
-            export_format, _pretty(selected_course) if selected_course else "Course",
-            include_questions, include_definitions, include_transcript,
-        )
-    _download_export("dl_sidebar")
 
 def _is_answer_key(file_path):
     """True for anything inside an 'answer keys' folder (any case; spaces, underscores or hyphens)
@@ -545,7 +482,7 @@ if retriever is not None:
     history_aware_retriever = create_history_aware_retriever(llm, retriever, contextualize_q_prompt)
 
     # 4. Q&A Prompt (Solves the "Confusing assignments" issue)
-    system_prompt = build_tutor_system_prompt(OFFER_TOKEN)
+    system_prompt = build_tutor_system_prompt()
     
     qa_prompt = ChatPromptTemplate.from_messages([
         ("system", system_prompt),
@@ -558,8 +495,6 @@ if retriever is not None:
 
     # 5. Display Chat History
     chat_sources = st.session_state.setdefault("chat_sources", {})
-    export_offers = st.session_state.setdefault("export_offers", set())
-    course_label = _pretty(selected_course) if selected_course else "Course"
     for i, message in enumerate(st.session_state["chat_history"]):
         if isinstance(message, HumanMessage):
             with st.chat_message("user"):
@@ -569,15 +504,6 @@ if retriever is not None:
                 st.write(message.content)
                 if chat_sources.get(i):
                     _show_sources(chat_sources[i])
-                if i in export_offers:
-                    st.caption("Nice work. Want a study package built from this conversation?")
-                    col_deck, col_pdf = st.columns(2)
-                    if col_deck.button("Generate Deck", key=f"offer_deck_{i}"):
-                        _build_export("PPTX", course_label, source=i)
-                    if col_pdf.button("Generate PDF", key=f"offer_pdf_{i}"):
-                        _build_export("PDF", course_label, source=i)
-                    if st.session_state.get("export", {}).get("source") == i:
-                        _download_export(f"dl_offer_{i}")
 
     # 6. User Chat Input
     if user_input := st.chat_input("Ask a question about this course..."):
@@ -592,14 +518,11 @@ if retriever is not None:
             })
         sources = _format_sources(response.get("context", []))
         answer = response["answer"]
-        offered = OFFER_TOKEN in answer
-        answer = answer.replace(OFFER_TOKEN, "").strip()
+        answer = answer.strip()
 
         # Update memory, then rerun so the new turn renders through the history loop above
         st.session_state["chat_history"].append(HumanMessage(content=user_input))
         st.session_state["chat_history"].append(AIMessage(content=answer))
         ai_index = len(st.session_state["chat_history"]) - 1
         chat_sources[ai_index] = sources
-        if offered:
-            export_offers.add(ai_index)
         st.rerun()

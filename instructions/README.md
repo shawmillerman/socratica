@@ -16,15 +16,13 @@ Never put answer keys here. Course-specific material (rubrics, assignment guides
 | 4 | (in code) calendar section | Today's date and term info placeholders. Technical. | Tutor chat |
 | 5 | `integrity/using_course_materials.md` | How to treat retrieved course excerpts; do not confuse practice exercises with assignments. | Tutor chat |
 | 6 | `system/formatting.md` | Rendering constraints: plain Markdown, no LaTeX, Excel formulas in backticks. | Tutor chat |
-| 7 | (in code) study package offer | Rule for the `[[OFFER_STUDY_PACKAGE]]` marker the app parses. Technical; lives in `utils/instructions.py`. | Tutor chat |
-| 8 | `integrity/honesty.md` | Never invent what the student said, files, or assignments; ask when the question is ambiguous. | Tutor chat |
-| 9 | (in code) `{context}` | Retrieved course excerpts are inserted here. Technical. | Tutor chat |
+| 7 | `integrity/honesty.md` | Never invent what the student said, files, or assignments; ask when the question is ambiguous. | Tutor chat |
+| 8 | (in code) `{context}` | Retrieved course excerpts are inserted here. Technical. | Tutor chat |
 
 ## Not yet moved here (phase 2)
 
 - Writing tutor prompt and department style guide: `utils/writing_tutor_prompt.txt`
-- Study package extraction prompt: `EXTRACTION_PROMPT` in `utils/study_package.py`
-- Shared voice (tone and encouragement) so all three surfaces sound the same
+- Shared voice (tone and encouragement) so the tutor and writing tutor sound the same
 - `course_guidelines.txt` (private, gitignored, currently read by nothing)
 
 ## Editing safely
