@@ -11,29 +11,16 @@ from dotenv import load_dotenv
 from langchain_community.document_loaders import DirectoryLoader, PyPDFLoader, TextLoader, Docx2txtLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import Chroma
-from langchain_openai import OpenAIEmbeddings, ChatOpenAI
 from langchain.chains import create_history_aware_retriever, create_retrieval_chain
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.messages import HumanMessage, AIMessage
 from langchain_core.documents import Document
 from utils.instructions import build_tutor_system_prompt
+from utils.llm import get_chat_model, get_embeddings
 from utils.writing_tutor import DraftError, SUPPORTED_TYPES, clean_draft_text, extract_draft_text, list_assignments, load_assignment_context, load_style_guide, review_draft
 
 load_dotenv()
-
-
-def _get_api_key():
-    """Streamlit Cloud secret first, then the local .env / environment variable."""
-    try:
-        if "OPENAI_API_KEY" in st.secrets:
-            return st.secrets["OPENAI_API_KEY"]
-    except Exception:  # no secrets.toml when running locally
-        pass
-    return os.getenv("OPENAI_API_KEY")
-
-
-api_key = _get_api_key()
 CHROMA_DIR = "./chroma"
 HIDDEN_COURSES = {"ba_101"}  # parked course folders: kept in ./data but not shown in the UI
 RETRIEVER_K = 10  # chunks per question; high enough to cover most of a textbook chapter for overviews
@@ -287,7 +274,7 @@ with st.sidebar:
                 draft_text = extract_draft_text(draft_file) if draft_file is not None else clean_draft_text(draft_pasted)
                 feedback = review_draft(
                     draft_text, _pretty(selected_course), load_style_guide(course_path),
-                    assignment=draft_assignment or None, assignment_context=assignment_context, api_key=api_key,
+                    assignment=draft_assignment or None, assignment_context=assignment_context,
                 )
             note = f"I submitted a draft for writing feedback: {draft_file.name if draft_file is not None else 'pasted text'}"
             if draft_assignment:
@@ -356,7 +343,7 @@ def load_docs(path):
     # Use course name in collection name so Chroma creates isolated collections
     collection_name = os.path.basename(path).replace(" ", "_").lower()
     persist_dir = os.path.join(CHROMA_DIR, f"{collection_name}_{_course_fingerprint(path)}")
-    embeddings = OpenAIEmbeddings(openai_api_key=api_key)
+    embeddings = get_embeddings()
 
     if os.path.isdir(persist_dir):
         vectorstore = Chroma(
@@ -461,7 +448,7 @@ def load_docs(path):
 retriever = load_docs(course_path)
 
 if retriever is not None:
-    llm = ChatOpenAI(model="gpt-4o-mini", temperature=0, openai_api_key=api_key)
+    llm = get_chat_model("tutor")
 
     # 3. Contextualize Question Prompt (Solves the "Follow-up question" issue)
     contextualize_q_system_prompt = (
