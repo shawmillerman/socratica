@@ -10,22 +10,23 @@ Never put answer keys here. Course-specific material (rubrics, assignment guides
 
 | Order | File | What it controls | Used by |
 |---|---|---|---|
-| 1 | `pedagogy/core_rules.md` | Who Socratica is, the Socratic method, never handing over answers, scaffolding. Rules 4 (validate effort) and 5 (keep it accessible) are really voice; to be split out in phase 2. | Tutor chat |
-| 2 | `pedagogy/reinforcing_understanding.md` | What counts as demonstrated understanding and how to reinforce it (confirm, restate differently, connect, check question). | Tutor chat |
-| 3 | `pedagogy/explaining_course_content.md` | The exception: summaries and explanations of course content are given directly, not Socratically. | Tutor chat |
-| 4 | (in code) calendar section | Today's date and term info placeholders. Technical. | Tutor chat |
-| 5 | `integrity/using_course_materials.md` | How to treat retrieved course excerpts; do not confuse practice exercises with assignments. | Tutor chat |
-| 6 | `system/formatting.md` | Rendering constraints: plain Markdown, no LaTeX, Excel formulas in backticks. | Tutor chat |
-| 7 | `integrity/honesty.md` | Never invent what the student said, files, or assignments; ask when the question is ambiguous. | Tutor chat |
-| 8 | (in code) `{context}` | Retrieved course excerpts are inserted here. Technical. | Tutor chat |
+| 1 | `pedagogy/core_rules.md` | Who Socratica is, the Socratic method, never handing over answers, scaffolding. Tone lives in `voice/`, not here. | Tutor chat |
+| 2 | `voice/tone_and_encouragement.md` | The shared voice: patient, warm, encouraging; validate effort; keep it accessible; be specific. Edit here and both the tutor and the writing tutor change. | Tutor chat, writing feedback |
+| 3 | `pedagogy/reinforcing_understanding.md` | What counts as demonstrated understanding and how to reinforce it (confirm, restate differently, connect, check question). | Tutor chat |
+| 4 | `pedagogy/explaining_course_content.md` | The exception: summaries and explanations of course content are given directly, not Socratically. | Tutor chat |
+| 5 | (in code) calendar section | Today's date and term info placeholders. Technical. | Tutor chat |
+| 6 | `integrity/using_course_materials.md` | How to treat retrieved course excerpts; do not confuse practice exercises with assignments. | Tutor chat |
+| 7 | `system/formatting.md` | Rendering constraints: plain Markdown, no LaTeX, Excel formulas in backticks. | Tutor chat |
+| 8 | `integrity/honesty.md` | Never invent what the student said, files, or assignments; ask when the question is ambiguous. | Tutor chat |
+| 9 | (in code) `{context}` | Retrieved course excerpts are inserted here. Technical. | Tutor chat |
 
 ## Not yet moved here (phase 2)
 
-- Writing tutor prompt and department style guide: `utils/writing_tutor_prompt.txt`
-- Shared voice (tone and encouragement) so the tutor and writing tutor sound the same
+- Writing tutor prompt and department style guide: `utils/writing_tutor_prompt.txt` (it already pulls in `voice/` through a `{voice}` placeholder)
+- A shared "never write work the student could submit" rule, currently worded separately in `pedagogy/core_rules.md` and the writing tutor prompt
 - `course_guidelines.txt` (private, gitignored, currently read by nothing)
 
 ## Editing safely
 
-- Keep `{today}`, `{term_info}` and `{context}` out of these files; they are filled in by code. Do not use other curly braces, since the prompt template treats them as placeholders.
+- Keep `{today}`, `{term_info}`, `{context}` and `{voice}` out of these files; they are filled in by code. Do not use other curly braces, since the prompt template treats them as placeholders.
 - Last reviewed: set this per file when you review wording.

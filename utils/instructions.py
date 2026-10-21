@@ -17,6 +17,7 @@ def build_tutor_system_prompt():
     """
     sections = [
         load_instruction("pedagogy/core_rules"),
+        load_instruction("voice/tone_and_encouragement"),
         load_instruction("pedagogy/reinforcing_understanding"),
         load_instruction("pedagogy/explaining_course_content"),
         CALENDAR_SECTION,
