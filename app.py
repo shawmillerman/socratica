@@ -5,6 +5,7 @@ from datetime import datetime, date, timedelta
 import hashlib
 import shutil
 import streamlit as st
+import streamlit.components.v1 as components
 import pptx
 import pandas as pd
 from dotenv import load_dotenv
@@ -253,7 +254,7 @@ with st.sidebar:
         "Upload your draft to get feedback: what is working, what is not working, and questions to guide your revision. "
         "Your draft will get checked against the department style guide and the assignment rubric. "
         "It does not rewrite your draft or grade it. "
-        "Paste text or upload your file first, then click 'Get Feedback' to see the review. You can also paste your draft text directly."
+        "Paste text or upload your file first, then click 'Get Feedback' to see the review."
     )
     draft_source = st.radio("Draft source", ["Upload file", "Paste text"], horizontal=True, key="draft_source")
     draft_file = draft_pasted = None
@@ -289,6 +290,7 @@ with st.sidebar:
                 note += f" ({draft_assignment})"
             st.session_state["chat_history"].append(HumanMessage(content=note))
             st.session_state["chat_history"].append(AIMessage(content=feedback))
+            st.session_state["scroll_to_msg"] = len(st.session_state["chat_history"]) - 1
             st.rerun()
         except DraftError as e:
             st.warning(str(e))
@@ -490,15 +492,25 @@ if retriever is not None:
 
     # 5. Display Chat History
     chat_sources = st.session_state.setdefault("chat_sources", {})
+    scroll_to = st.session_state.pop("scroll_to_msg", None)
     for i, message in enumerate(st.session_state["chat_history"]):
         if isinstance(message, HumanMessage):
             with st.chat_message("user"):
                 st.write(message.content)
         elif isinstance(message, AIMessage):
             with st.chat_message("assistant"):
+                if i == scroll_to:
+                    st.markdown('<div id="scroll-target"></div>', unsafe_allow_html=True)
                 st.write(message.content)
                 if chat_sources.get(i):
                     _show_sources(chat_sources[i])
+    if scroll_to is not None:
+        # Long feedback leaves the page scrolled to the bottom; bring the start of the reply into view
+        components.html(
+            "<script>setTimeout(() => {const el = window.parent.document.getElementById('scroll-target');"
+            "if (el) el.scrollIntoView({block: 'start'});}, 300);</script>",
+            height=0,
+        )
 
     # 6. User Chat Input
     if user_input := st.chat_input("Ask a question about this course..."):
