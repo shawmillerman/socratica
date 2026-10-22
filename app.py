@@ -500,15 +500,16 @@ if retriever is not None:
         elif isinstance(message, AIMessage):
             with st.chat_message("assistant"):
                 if i == scroll_to:
-                    st.markdown('<div id="scroll-target"></div>', unsafe_allow_html=True)
+                    st.markdown('<div id="scroll-target" style="scroll-margin-top: 100px;"></div>', unsafe_allow_html=True)
                 st.write(message.content)
                 if chat_sources.get(i):
                     _show_sources(chat_sources[i])
     if scroll_to is not None:
         # Long feedback leaves the page scrolled to the bottom; bring the start of the reply into view
         components.html(
-            "<script>setTimeout(() => {const el = window.parent.document.getElementById('scroll-target');"
-            "if (el) el.scrollIntoView({block: 'start'});}, 300);</script>",
+            "<script>const go = () => {const el = window.parent.document.getElementById('scroll-target');"
+            "if (el) el.scrollIntoView({block: 'start'});};"
+            "setTimeout(go, 300); setTimeout(go, 1000);</script>",
             height=0,
         )
 
