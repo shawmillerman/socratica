@@ -259,7 +259,7 @@ with st.sidebar:
     draft_source = st.radio("Draft source", ["Upload file", "Paste text"], horizontal=True, key="draft_source")
     draft_file = draft_pasted = None
     if draft_source == "Upload file":
-        draft_file = st.file_uploader("Upload a draft (.docx, .pdf or .txt)", type=SUPPORTED_TYPES, key="draft_file")
+        draft_file = st.file_uploader("Upload a draft (.docx, .pdf or .txt)", type=SUPPORTED_TYPES, key="draft_file", label_visibility="collapsed")
     else:
         draft_pasted = st.text_area("Paste your draft here", height=200, key="draft_pasted")
         st.caption(f"Drafts up to {MAX_DRAFT_CHARS:,} characters.")
