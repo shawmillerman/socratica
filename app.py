@@ -17,6 +17,7 @@ from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.messages import HumanMessage, AIMessage
 from langchain_core.documents import Document
+from utils.course_data import ensure_course_data
 from utils.instructions import build_tutor_system_prompt
 from utils.llm import get_chat_model, get_embeddings
 from utils.writing_tutor import DraftError, MAX_DRAFT_CHARS, SUPPORTED_TYPES, clean_draft_text, extract_draft_text, list_assignments, load_assignment_context, load_style_guide, review_draft
@@ -220,6 +221,8 @@ with st.sidebar:
     # 1. Course Selection
     # -------------------------------------------------------------------------
     BASE_DATA_DIR = "./data"
+    if ensure_course_data():
+        HIDDEN_COURSES.add("demo_course")
     if os.path.exists(BASE_DATA_DIR):
         available_courses = sorted(
             d for d in os.listdir(BASE_DATA_DIR)

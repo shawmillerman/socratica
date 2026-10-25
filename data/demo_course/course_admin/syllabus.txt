@@ -1,0 +1,20 @@
+DEMO 101: Introduction to Data Literacy (sample course)
+
+This is a small, original sample course that ships with Socratica so the app runs without any real course
+materials. Replace it with your own course folder under data/.
+
+Instructor: Sample Instructor
+Format: 4 weeks, one short reading and one activity per week.
+
+Learning goals
+- Read a simple table of data and describe what it shows.
+- Build a small budget workbook with formulas.
+- Write a one-page memo that states a finding and supports it with a number.
+
+Grading
+- Budget workbook: 50 points
+- Short memo: 50 points
+- Late work loses 10% per day. Ask the instructor before the due date if you need an extension.
+
+Academic integrity
+Use Socratica to ask questions and get feedback on your approach. Submit only work you wrote yourself.

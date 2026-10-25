@@ -1,0 +1,19 @@
+DEMO 101 Course Schedule
+
+Week 1
+Topic: What is data? Rows, columns and units.
+Reading: supplemental_materials/spreadsheet_basics.txt
+Activity: Describe a small table in two sentences.
+
+Week 2
+Topic: Formulas and totals.
+Reading: spreadsheet_basics.txt, section "Formulas"
+Due: Budget workbook (see assignments/budget_workbook)
+
+Week 3
+Topic: Charts that tell one story.
+Activity: Pick the chart type that fits a question.
+
+Week 4
+Topic: Writing up a finding.
+Due: Short memo (see assignments/short_memo)

@@ -1,0 +1,22 @@
+Spreadsheet Basics (original sample reading for the demo course)
+
+Rows, columns and units
+A spreadsheet is a grid. Each row usually describes one thing (a purchase, a person, a day) and each column
+describes one property of those things (amount, category, date). Always label the unit of a column, for
+example dollars or hours, so a reader never has to guess.
+
+Formulas
+A formula starts with an equals sign. =SUM(B2:B9) adds the cells from B2 down to B9. Prefer formulas to typed
+totals: when an input changes, the total updates by itself.
+
+Making a decision with IF
+=IF(B10<0,"Over budget","On track") shows a message based on a test. The first part is the test, the second is
+what to show when it is true, and the third is what to show when it is false.
+
+Looking things up
+A lookup finds a value in a table by a key. For example, a category name can be used to find that category's
+monthly limit. Use XLOOKUP when your version of Excel has it, otherwise VLOOKUP.
+
+Describing a table
+A good two-sentence description says what each row represents and names one pattern you can see, such as
+"housing is the largest expense, about half of income".

@@ -1,0 +1,6 @@
+RUBRIC: Short Memo (50 points)
+
+1. Format (10 pts): Memo heading is complete; length is 300 to 400 words.
+2. Finding (15 pts): The opening sentence states one clear finding.
+3. Evidence (15 pts): At least one specific number supports the finding.
+4. Recommendation (10 pts): One concrete next step is given.

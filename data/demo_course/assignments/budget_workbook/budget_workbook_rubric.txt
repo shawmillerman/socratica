@@ -1,0 +1,6 @@
+RUBRIC: Budget Workbook (50 points)
+
+1. Structure (10 pts): Income, Expenses and Summary sheets exist and are clearly named.
+2. Data (10 pts): At least two income sources and eight expense lines, grouped by category.
+3. Formulas (20 pts): Totals use formulas, not typed numbers. At least one IF or lookup formula is used correctly.
+4. Explanation (10 pts): The Summary note explains the balance in plain language.

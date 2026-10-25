@@ -1,0 +1,11 @@
+Budget Workbook
+
+Overview: Build a one-month personal budget workbook in Excel or Google Sheets.
+
+Requirements
+- A sheet named Income listing at least two income sources with amounts.
+- A sheet named Expenses listing at least eight expense lines grouped by category.
+- A Summary sheet that uses formulas (SUM, and one IF or lookup) to show total income, total expenses and the remaining balance.
+- A one-sentence note on the Summary sheet explaining what the balance means.
+
+Submission: upload the workbook before the Week 2 deadline.

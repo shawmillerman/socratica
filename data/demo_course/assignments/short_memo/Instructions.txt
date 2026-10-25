@@ -1,0 +1,10 @@
+Short Memo
+
+Overview: Write a one-page memo (300 to 400 words) to a manager about one finding from your budget workbook.
+
+Requirements
+- Heading with To, From, Date and Subject lines.
+- Opening sentence that states the finding.
+- At least one specific number from your workbook that supports it.
+- One recommended next step.
+- Plain, professional tone with no jargon left unexplained.
